@@ -1,0 +1,11 @@
+{
+    "name": "reflections",
+    "author": "TNT",
+    "description": "The man in the mirror nods his head \n\n `ncat --ssl reflections.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{Wh0_w1ll_I_trus7_N0w}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        5000
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "name": "sporadiclogarithms",
+    "author": "cyberg",
+    "description": "I heard the discrete logarithm problem can be solved efficiently in all sporadic groups without even knowing the group. Can you prove it to me?\n\n `ncat --ssl sporadiclogarithms.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{th3_m0n5t3r_gr0up_w45_t0_1mpr4ct1c4l_:(}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        8888
+    ]
+}

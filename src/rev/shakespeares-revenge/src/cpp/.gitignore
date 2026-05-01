@@ -1,0 +1,4 @@
+shakespeare_cpp
+build/
+src/*.o
+*.o

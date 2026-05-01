@@ -1,0 +1,21 @@
+FROM --platform=linux/amd64 debian:bookworm-slim
+
+RUN apt-get update && \
+    apt-get install -y busybox-static gcc libc6-dev cpio gzip fakeroot && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /home/throughthewall
+
+# Copy source files and real flag
+COPY ./src/ /home/throughthewall/
+COPY ./flag.txt /flag.txt
+
+
+RUN chmod +x /home/throughthewall/gen_initramfs.sh
+
+# make /build_out writable for any uid
+RUN mkdir -p /build_out && chmod 777 /build_out
+
+# Build initramfs with real flag using fakeroot (handles mknod without root)
+CMD FLAG="$(cat /flag.txt)" fakeroot bash /home/throughthewall/gen_initramfs.sh && \
+    cp /home/throughthewall/initramfs.cpio.gz /build_out/initramfs.cpio.gz

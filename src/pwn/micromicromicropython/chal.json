@@ -1,0 +1,11 @@
+{
+    "name": "micromicromicropython",
+    "author": "oh_word",
+    "description": "So stripped it doesn't even need to go in the jail category \n\n `ncat --ssl micromicromicropython.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{this_was_originally_going_to_be_a_0day_but_someone_reported_it}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "ports": [
+        5000
+    ]
+}

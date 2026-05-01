@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ username }} | Egg Hatcher Arena</title>
+        <style>
+            :root {
+                --sky-top: #fff0c9;
+                --sky-bottom: #ff8e62;
+                --panel: rgba(255, 250, 239, 0.9);
+                --panel-strong: #fff7e8;
+                --line: rgba(104, 66, 28, 0.14);
+                --text: #2f2340;
+                --muted: #6b5b73;
+                --primary: #ff6b4a;
+                --primary-deep: #d44c3c;
+                --secondary: #21b6a8;
+                --secondary-deep: #11867b;
+                --shadow: 0 18px 44px rgba(89, 50, 23, 0.18);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                font-family:
+                    "Avenir Next", "Trebuchet MS", "Gill Sans", sans-serif;
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        circle at top left,
+                        rgba(255, 255, 255, 0.85),
+                        transparent 30%
+                    ),
+                    radial-gradient(
+                        circle at 85% 18%,
+                        rgba(255, 209, 102, 0.7),
+                        transparent 22%
+                    ),
+                    linear-gradient(
+                        180deg,
+                        var(--sky-top) 0%,
+                        #ffd5ab 38%,
+                        var(--sky-bottom) 100%
+                    );
+                padding: 18px 14px 36px;
+            }
+
+            .shell {
+                width: min(100%, 1400px);
+                margin: 0 auto;
+                display: grid;
+                gap: 14px;
+            }
+
+            .dashboard-grid {
+                display: grid;
+                gap: 14px;
+                align-items: start;
+            }
+
+            .main-column {
+                display: grid;
+                gap: 14px;
+                min-width: 0;
+            }
+
+            .side-column {
+                display: grid;
+                gap: 14px;
+                min-width: 0;
+            }
+
+            .panel {
+                position: relative;
+                overflow: hidden;
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 24px;
+                padding: 18px;
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(8px);
+            }
+
+            .panel::before {
+                content: "";
+                position: absolute;
+                inset: auto -18% -55% auto;
+                width: 180px;
+                height: 180px;
+                background: radial-gradient(
+                    circle,
+                    rgba(255, 209, 102, 0.28),
+                    transparent 68%
+                );
+                pointer-events: none;
+            }
+
+            .eyebrow {
+                margin: 0 0 6px;
+                color: var(--secondary-deep);
+                font-size: 0.82rem;
+                font-weight: 800;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+
+            h1 {
+                margin: 0;
+                font-size: clamp(2rem, 8vw, 3.1rem);
+                line-height: 0.95;
+            }
+
+            h2 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+
+            p {
+                margin: 0;
+                line-height: 1.45;
+            }
+
+            code {
+                font-family:
+                    "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            }
+
+            .subtle {
+                margin-top: 10px;
+                color: var(--muted);
+                max-width: 34ch;
+            }
+
+            .button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                border: 0;
+                border-radius: 16px;
+                padding: 13px 16px;
+                font: inherit;
+                font-weight: 800;
+                cursor: pointer;
+                transition:
+                    transform 140ms ease,
+                    filter 140ms ease;
+            }
+
+            .button:hover {
+                transform: translateY(-1px);
+                filter: brightness(1.02);
+            }
+
+            .button:disabled {
+                cursor: not-allowed;
+                transform: none;
+                filter: grayscale(0.2);
+                opacity: 0.55;
+            }
+
+            .button.primary {
+                color: white;
+                background: linear-gradient(
+                    180deg,
+                    var(--primary) 0%,
+                    var(--primary-deep) 100%
+                );
+            }
+
+            .button.secondary {
+                color: white;
+                background: linear-gradient(
+                    180deg,
+                    var(--secondary) 0%,
+                    var(--secondary-deep) 100%
+                );
+            }
+
+            .button.ghost {
+                width: auto;
+                color: var(--text);
+                background: rgba(255, 255, 255, 0.72);
+                border: 1px solid rgba(92, 55, 30, 0.12);
+                padding-inline: 18px;
+            }
+
+            .banner {
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 209, 102, 0.9),
+                    rgba(255, 255, 255, 0.8)
+                );
+                border: 1px solid rgba(92, 55, 30, 0.12);
+                color: #5f431c;
+                padding: 12px 14px;
+                border-radius: 18px;
+                font-weight: 700;
+            }
+
+            .topbar {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .control-row {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+                align-items: stretch;
+            }
+
+            .meter {
+                background: var(--panel-strong);
+                border-radius: 20px;
+                border: 1px solid rgba(92, 55, 30, 0.1);
+                padding: 14px;
+                min-height: 94px;
+                display: grid;
+                align-content: center;
+                gap: 4px;
+            }
+
+            .meter strong {
+                font-size: 1.8rem;
+                line-height: 1;
+            }
+
+            .meter span {
+                color: var(--muted);
+                font-size: 0.88rem;
+                font-weight: 700;
+            }
+
+            .action-panel {
+                display: grid;
+                gap: 10px;
+                align-content: center;
+                padding: 14px;
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.88),
+                    rgba(255, 243, 219, 0.9)
+                );
+                border-radius: 20px;
+                border: 1px solid rgba(92, 55, 30, 0.1);
+            }
+
+            .action-panel small {
+                color: var(--muted);
+                font-size: 0.82rem;
+                line-height: 1.35;
+            }
+
+            .egg-grid {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(min(100%, 220px), 1fr)
+                );
+            }
+
+            .egg-card {
+                background: rgba(255, 249, 236, 0.88);
+                border: 1px solid rgba(92, 55, 30, 0.12);
+                border-radius: 22px;
+                padding: 16px 16px 20px;
+                display: grid;
+                gap: 14px;
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+            }
+
+            .egg-card.placeholder {
+                background: rgba(255, 255, 255, 0.55);
+                border-style: dashed;
+            }
+
+            .card-top {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                font-size: 0.82rem;
+                font-weight: 800;
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .egg-visual {
+                min-height: 150px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 8px 0 22px;
+            }
+
+            .egg-art {
+                --shell-top: #fffdf6;
+                --shell-mid: #f8de9a;
+                --shell-bottom: #f2b762;
+                --shell-border: rgba(120, 83, 33, 0.16);
+                --shell-spot: rgba(255, 255, 255, 0.78);
+                --shell-glow: rgba(152, 93, 25, 0.16);
+                width: 82px;
+                height: 104px;
+                flex: 0 0 auto;
+                border-radius: 50% 50% 44% 44%;
+                background: linear-gradient(
+                    180deg,
+                    var(--shell-top) 0%,
+                    var(--shell-mid) 52%,
+                    var(--shell-bottom) 100%
+                );
+                border: 3px solid var(--shell-border);
+                position: relative;
+                box-shadow:
+                    0 18px 26px var(--shell-glow),
+                    inset 0 8px 16px rgba(255, 255, 255, 0.7);
+            }
+
+            .egg-art::before {
+                content: "";
+                position: absolute;
+                top: 18px;
+                left: 18px;
+                width: 18px;
+                height: 34px;
+                border-radius: 50%;
+                background: var(--shell-spot);
+                transform: rotate(16deg);
+            }
+
+            .egg-art::after {
+                content: "";
+                position: absolute;
+                right: 12px;
+                bottom: 20px;
+                width: 26px;
+                height: 10px;
+                border-radius: 999px;
+                background: rgba(33, 182, 168, 0.2);
+            }
+
+            .empty-art {
+                width: 82px;
+                height: 104px;
+                flex: 0 0 auto;
+                border-radius: 50% 50% 44% 44%;
+                border: 3px dashed rgba(92, 55, 30, 0.2);
+                background: rgba(255, 255, 255, 0.4);
+            }
+
+            .egg-copy {
+                color: var(--muted);
+                font-size: 0.92rem;
+            }
+
+            .result pre {
+                margin: 12px 0 0;
+                background: #291f33;
+                color: #f7efd9;
+                padding: 14px;
+                border-radius: 16px;
+                overflow-x: auto;
+                white-space: pre-wrap;
+                font-family:
+                    "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+                line-height: 1.35;
+            }
+
+            .result-empty {
+                margin-top: 12px;
+                min-height: 220px;
+                display: grid;
+                place-items: center;
+                border-radius: 16px;
+                border: 1px dashed rgba(92, 55, 30, 0.18);
+                background: rgba(255, 255, 255, 0.45);
+                color: var(--muted);
+                text-align: center;
+                padding: 18px;
+            }
+
+            @media (min-width: 620px) {
+                body {
+                    padding-top: 28px;
+                }
+            }
+
+            @media (min-width: 920px) {
+                .dashboard-grid {
+                    grid-template-columns: minmax(0, 2.2fr) minmax(
+                            280px,
+                            0.95fr
+                        );
+                }
+            }
+
+            @media (min-width: 1240px) {
+                .dashboard-grid {
+                    grid-template-columns: minmax(0, 2.5fr) minmax(320px, 0.9fr);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="shell">
+            <section class="panel topbar">
+                <div>
+                    <p class="eyebrow">Egg Hatching Simulator</p>
+                    <h1>{{ username }}</h1>
+                    <p class="subtle">
+                        Incubate eggs, time the hatch, and get big stat rolls.
+                    </p>
+                </div>
+                <form method="post" action="/logout">
+                    <button class="button ghost" type="submit">Logout</button>
+                </form>
+            </section>
+            {% if flash %}
+            <div class="banner">{{ flash }}</div>
+            {% endif %}
+            <section class="panel control-row">
+                <div class="meter">
+                    <strong>{{ egg_count }}/{{ max_eggs }}</strong>
+                    <span>Eggs in the incubator</span>
+                </div>
+                <form class="action-panel" method="post" action="/eggs">
+                    <button
+                        class="button primary"
+                        type="button"
+                        id="create-egg-button"
+                        {%
+                        if
+                        summon_disabled
+                        %}disabled{%
+                        endif
+                        %}
+                    >
+                        Get Egg
+                    </button>
+                </form>
+            </section>
+            <section class="dashboard-grid">
+                <div class="main-column">
+                    <section class="egg-grid">
+                        {% for egg in egg_cards %} {% if egg.is_empty %}
+                        <article class="egg-card placeholder">
+                            <div class="card-top">
+                                <span>Cradle {{ egg.slot }}</span>
+                                <span>Open</span>
+                            </div>
+                            <div class="egg-visual">
+                                <div class="empty-art" aria-hidden="true"></div>
+                            </div>
+                            <h2>Empty Slot</h2>
+                            <p class="egg-copy">
+                                Tap the hatch button to try another mystery egg.
+                            </p>
+                        </article>
+                        {% else %}
+                        <article class="egg-card">
+                            <div class="card-top">
+                                <span>Cradle {{ egg.slot }}</span>
+                                <span>{{ egg.warm_seconds }}s warm</span>
+                            </div>
+                            <div class="egg-visual">
+                                <div
+                                    class="egg-art"
+                                    aria-hidden="true"
+                                    style="--shell-top: {{ egg.palette.shell_top }}; --shell-mid: {{ egg.palette.shell_mid }}; --shell-bottom: {{ egg.palette.shell_bottom }}; --shell-border: {{ egg.palette.shell_border }}; --shell-spot: {{ egg.palette.shell_spot }}; --shell-glow: {{ egg.palette.shell_glow }};"
+                                ></div>
+                            </div>
+                            <h2>{{ egg.name }}</h2>
+                            <p class="egg-copy">
+                                Energy is building. A longer wait gives the
+                                hatch a bigger stat burst.
+                            </p>
+                            <form
+                                class="hatch-egg-form"
+                                method="post"
+                                action="/eggs/{{ egg.egg_id }}/hatch"
+                            >
+                                <button
+                                    class="button secondary hatch-egg-button"
+                                    type="button"
+                                    data-hatch-url="/eggs/{{ egg.egg_id }}/hatch"
+                                >
+                                    Hatch Egg
+                                </button>
+                            </form>
+                        </article>
+                        {% endif %} {% endfor %}
+                    </section>
+                </div>
+                <aside class="side-column">
+                    <section class="panel result">
+                        <p class="eyebrow">Latest Hatch</p>
+                        <h2>Creature Unsealed</h2>
+                        {% if last_hatch %}
+                        <pre>{{ last_hatch }}</pre>
+                        {% else %}
+                        <div class="result-empty">
+                            <p>
+                                No creature yet. Hatch an egg to fill this
+                                chamber.
+                            </p>
+                        </div>
+                        {% endif %}
+                    </section>
+                    <section class="panel">
+                        <p class="eyebrow">Incubator Tips</p>
+                        <h2>Play The Timing</h2>
+                        <p class="subtle">
+                            Fresh eggs hatch fast, but warmer eggs hit harder.
+                            Fill the board, wait a bit, then crack your
+                            favorites.
+                        </p>
+                    </section>
+                </aside>
+            </section>
+        </main>
+        <script>
+            const eggNames = [
+                "blazebud",
+                "voltpeep",
+                "mossnib",
+                "shellbyte",
+                "novapip",
+                "emberdot",
+                "aquamite",
+                "glintbug",
+                "runechirp",
+                "pixeldrake",
+                "andrewtate",
+                "asufratleader",
+            ];
+
+            function randomItem(items) {
+                return items[Math.floor(Math.random() * items.length)];
+            }
+
+            function randomArtIndex() {
+                return Math.floor(Math.random() * 22);
+            }
+
+            async function postJson(url, payload) {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(payload),
+                    credentials: "same-origin",
+                });
+
+                if (!response.ok && response.redirected === false) {
+                    throw new Error(
+                        `Request failed with status ${response.status}`,
+                    );
+                }
+
+                window.location.reload();
+            }
+
+            const createEggButton =
+                document.getElementById("create-egg-button");
+            if (createEggButton) {
+                createEggButton.addEventListener("click", async () => {
+                    createEggButton.disabled = true;
+                    try {
+                        await postJson("/eggs", { name: randomItem(eggNames) });
+                    } catch (error) {
+                        createEggButton.disabled = false;
+                    }
+                });
+            }
+
+            for (const button of document.querySelectorAll(
+                ".hatch-egg-button",
+            )) {
+                button.addEventListener("click", async () => {
+                    button.disabled = true;
+                    try {
+                        await postJson(button.dataset.hatchUrl, {
+                            art_index: randomArtIndex(),
+                        });
+                    } catch (error) {
+                        button.disabled = false;
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

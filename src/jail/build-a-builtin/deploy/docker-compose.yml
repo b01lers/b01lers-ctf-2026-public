@@ -1,0 +1,9 @@
+name: full-chain
+services:
+  challenge:
+    build:
+      dockerfile: ../deploy/Dockerfile
+      context: ../src
+    ports:
+      - "1337:5000"
+    privileged: true

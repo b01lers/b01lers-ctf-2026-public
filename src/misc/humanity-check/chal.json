@@ -1,0 +1,10 @@
+{
+  "name": "humanity-check",
+  "author": "b01lers",
+  "description": "Welcome to b01lers CTF 2026! To meet new sponsorship requirements, please verify your humanity here: <https://verify.b01lersc.tf>\n\nIf you haven't already, join the CTF discord here: <https://discord.gg/tBMqujE>\n\nHappy hacking!",
+  "flag": "bctf{krauq_blocked}",
+  "difficulty": "easy",
+  "can_be_auto_deployed": false,
+  "minPoints": 1,
+  "maxPoints": 1
+}

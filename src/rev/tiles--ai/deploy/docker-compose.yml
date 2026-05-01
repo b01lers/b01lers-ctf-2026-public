@@ -1,0 +1,27 @@
+name: tiles--ai
+services:
+    chall:
+        platform: linux/amd64
+        container_name: tiles--ai
+        build:
+            dockerfile: ./deploy/Dockerfile
+            context: ../
+        logging:
+            driver: "json-file"
+        restart: always
+
+        # security_opt:
+        #     - seccomp:unconfined
+        cap_add:
+            - SYS_PTRACE
+        expose: # This should be the port your challenge runs on inside the container.
+            - "5000"
+        labels: # If you have a second service make sure the service name and port are replaced
+            - "traefik.enable=true"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.rule=HostSNI(`${COMPOSE_PROJECT_NAME}.b01le.rs`)"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.tls=true"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.entrypoints=ncsecure"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.service=${COMPOSE_PROJECT_NAME}-svc"
+            - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-svc.loadbalancer.server.port=5000"
+        ports:
+            - "1337:5000"

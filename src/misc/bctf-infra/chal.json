@@ -1,0 +1,9 @@
+{
+	"name": "bctf-infra",
+	"author": "hmmm",
+	"description": "I got access to the b01lersCTF backend infrastructure, can you take a look and see what you can find? \n\n `ncat --ssl bctf-infra.opus4-7.b01le.rs 8443`",
+	"flag": "bctf{perfect_infrastructure_tm_f6634b38}",
+	"difficulty": "medium",
+	"can_be_auto_deployed": true,
+	"ports": [1337]
+}

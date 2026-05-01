@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@utility container {
+    @apply px-8 sm:px-12 lg:px-16 xl:px-20 2xl:px-32;
+    margin: 0 auto;
+}
+
+.markdown {
+    p {
+        @apply my-3;
+    }
+
+    h1 {
+        @apply font-semibold text-3xl mb-5;
+    }
+
+    h2 {
+        @apply font-semibold text-xl mb-3 mt-5;
+    }
+
+    h3 {
+        @apply font-semibold text-lg mb-2 mt-4;
+    }
+
+    a {
+        @apply text-blue-700 hover:underline;
+    }
+
+    table, th, td {
+        @apply border border-black/20;
+    }
+
+    th, td {
+        @apply p-2;
+    }
+
+    th {
+        @apply bg-gray-100;
+    }
+
+    ol, ul {
+        @apply pl-6;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    hr {
+        @apply my-4 border-black/20;
+    }
+
+    blockquote {
+        @apply border-l-4 border-black/20 pl-4;
+    }
+}

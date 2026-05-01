@@ -1,0 +1,1456 @@
+set $b68 44
+set $b95 86
+set $b66 41
+set $b84 58
+set $b24 65
+set $b87 57
+set $b3 34
+set $b97 98
+set $b72 85
+set $b20 57
+set $b53 82
+set $b43 36
+set $b12 39
+set $b5 33
+set $b79 39
+set $b70 61
+set $b88 70
+set $b40 40
+set $b28 98
+set $b89 61
+set $b23 56
+set $b91 96
+set $b59 48
+set $b90 49
+set $b14 58
+set $b8 90
+set $b6 65
+set $b32 37
+set $b94 35
+set $b26 92
+set $b17 51
+set $b29 60
+set $b85 65
+set $b41 99
+set $b62 39
+set $b99 98
+set $b45 54
+set $b19 33
+set $b83 54
+set $b67 79
+set $b76 67
+set $b46 61
+set $b44 85
+set $b1 76
+set $b52 49
+set $b31 60
+set $b65 82
+set $b80 63
+set $b9 30
+set $b38 96
+set $b77 61
+set $b16 76
+set $b98 61
+set $b15 75
+set $b50 75
+set $b54 89
+set $b96 30
+set $b57 43
+set $b48 76
+set $b55 61
+set $b7 98
+set $b18 89
+set $b78 99
+set $b63 39
+set $b39 93
+set $b36 39
+set $b37 97
+set $b13 93
+set $b35 57
+set $b56 97
+set $b4 31
+set $b30 63
+set $b82 55
+set $b69 85
+set $b33 51
+set $b60 39
+set $b64 51
+set $b34 40
+set $b74 71
+set $b61 95
+set $b2 33
+set $b71 37
+set $b73 88
+set $b58 56
+set $b27 39
+set $b21 50
+set $b92 92
+set $b47 82
+set $b81 74
+set $b86 68
+set $b10 43
+set $b22 50
+set $b0 53
+set $b42 58
+set $b93 56
+set $b11 79
+set $b25 92
+set $b51 67
+set $b49 84
+set $b75 75 // set bombs/checks
+set $c0 93
+set $c1 72
+set $c2 15
+set $c3 27
+echo "Enter the password:"
+read
+store
+echo "Checking... (this may take a while)"
+jmp "parseloop"
+<getchar> jg @3 9 "getchar_a10"; @1 @2 @3 // preserve @1, @2, @3 = idx, returns @3 = charcode
+jne @3 0 "getchar_n0"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i0
+<getchar_n0> jne @3 1 "getchar_n1"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i1
+<getchar_n1> jne @3 2 "getchar_n2"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i2
+<getchar_n2> jne @3 3 "getchar_n3"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i3
+<getchar_n3> jne @3 4 "getchar_n4"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i4
+<getchar_n4> jne @3 5 "getchar_n5"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i5
+<getchar_n5> jne @3 6 "getchar_n6"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i6
+<getchar_n6> jne @3 7 "getchar_n7"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i7
+<getchar_n7> jne @3 8 "getchar_n8"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i8
+<getchar_n8> jmp "getchar_out"; @1 @2 $i9
+<getchar_a10> jg @3 19 "getchar_a20"; @1 @2 @3
+jne @3 10 "getchar_n10"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i10
+<getchar_n10> jne @3 11 "getchar_n11"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i11
+<getchar_n11> jne @3 12 "getchar_n12"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i12
+<getchar_n12> jne @3 13 "getchar_n13"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i13
+<getchar_n13> jne @3 14 "getchar_n14"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i14
+<getchar_n14> jne @3 15 "getchar_n15"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i15
+<getchar_n15> jne @3 16 "getchar_n16"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i16
+<getchar_n16> jne @3 17 "getchar_n17"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i17
+<getchar_n17> jne @3 18 "getchar_n18"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i18
+<getchar_n18> jmp "getchar_out"; @1 @2 $i19
+<getchar_a20> jg @3 29 "getchar_a30"; @1 @2 @3
+jne @3 20 "getchar_n20"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i20
+<getchar_n20> jne @3 21 "getchar_n21"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i21
+<getchar_n21> jne @3 22 "getchar_n22"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i22
+<getchar_n22> jne @3 23 "getchar_n23"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i23
+<getchar_n23> jne @3 24 "getchar_n24"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i24
+<getchar_n24> jne @3 25 "getchar_n25"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i25
+<getchar_n25> jne @3 26 "getchar_n26"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i26
+<getchar_n26> jne @3 27 "getchar_n27"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i27
+<getchar_n27> jne @3 28 "getchar_n28"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i28
+<getchar_n28> jmp "getchar_out"; @1 @2 $i29
+<getchar_a30> jg @3 39 "getchar_a40"; @1 @2 @3
+jne @3 30 "getchar_n30"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i30
+<getchar_n30> jne @3 31 "getchar_n31"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i31
+<getchar_n31> jne @3 32 "getchar_n32"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i32
+<getchar_n32> jne @3 33 "getchar_n33"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i33
+<getchar_n33> jne @3 34 "getchar_n34"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i34
+<getchar_n34> jne @3 35 "getchar_n35"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i35
+<getchar_n35> jne @3 36 "getchar_n36"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i36
+<getchar_n36> jne @3 37 "getchar_n37"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i37
+<getchar_n37> jne @3 38 "getchar_n38"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i38
+<getchar_n38> jmp "getchar_out"; @1 @2 $i39
+<getchar_a40> jg @3 49 "getchar_a50"; @1 @2 @3
+jne @3 40 "getchar_n40"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i40
+<getchar_n40> jne @3 41 "getchar_n41"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i41
+<getchar_n41> jne @3 42 "getchar_n42"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i42
+<getchar_n42> jne @3 43 "getchar_n43"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i43
+<getchar_n43> jne @3 44 "getchar_n44"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i44
+<getchar_n44> jne @3 45 "getchar_n45"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i45
+<getchar_n45> jne @3 46 "getchar_n46"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i46
+<getchar_n46> jne @3 47 "getchar_n47"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i47
+<getchar_n47> jne @3 48 "getchar_n48"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i48
+<getchar_n48> jmp "getchar_out"; @1 @2 $i49
+<getchar_a50> jg @3 59 "getchar_a60"; @1 @2 @3
+jne @3 50 "getchar_n50"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i50
+<getchar_n50> jne @3 51 "getchar_n51"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i51
+<getchar_n51> jne @3 52 "getchar_n52"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i52
+<getchar_n52> jne @3 53 "getchar_n53"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i53
+<getchar_n53> jne @3 54 "getchar_n54"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i54
+<getchar_n54> jne @3 55 "getchar_n55"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i55
+<getchar_n55> jne @3 56 "getchar_n56"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i56
+<getchar_n56> jne @3 57 "getchar_n57"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i57
+<getchar_n57> jne @3 58 "getchar_n58"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i58
+<getchar_n58> jmp "getchar_out"; @1 @2 $i59
+<getchar_a60> jg @3 69 "getchar_a70"; @1 @2 @3
+jne @3 60 "getchar_n60"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i60
+<getchar_n60> jne @3 61 "getchar_n61"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i61
+<getchar_n61> jne @3 62 "getchar_n62"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i62
+<getchar_n62> jne @3 63 "getchar_n63"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i63
+<getchar_n63> jne @3 64 "getchar_n64"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i64
+<getchar_n64> jne @3 65 "getchar_n65"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i65
+<getchar_n65> jne @3 66 "getchar_n66"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i66
+<getchar_n66> jne @3 67 "getchar_n67"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i67
+<getchar_n67> jne @3 68 "getchar_n68"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i68
+<getchar_n68> jmp "getchar_out"; @1 @2 $i69
+<getchar_a70> jg @3 79 "getchar_a80"; @1 @2 @3
+jne @3 70 "getchar_n70"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i70
+<getchar_n70> jne @3 71 "getchar_n71"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i71
+<getchar_n71> jne @3 72 "getchar_n72"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i72
+<getchar_n72> jne @3 73 "getchar_n73"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i73
+<getchar_n73> jne @3 74 "getchar_n74"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i74
+<getchar_n74> jne @3 75 "getchar_n75"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i75
+<getchar_n75> jne @3 76 "getchar_n76"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i76
+<getchar_n76> jne @3 77 "getchar_n77"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i77
+<getchar_n77> jne @3 78 "getchar_n78"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i78
+<getchar_n78> jmp "getchar_out"; @1 @2 $i79
+<getchar_a80> jg @3 89 "getchar_a90"; @1 @2 @3
+jne @3 80 "getchar_n80"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i80
+<getchar_n80> jne @3 81 "getchar_n81"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i81
+<getchar_n81> jne @3 82 "getchar_n82"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i82
+<getchar_n82> jne @3 83 "getchar_n83"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i83
+<getchar_n83> jne @3 84 "getchar_n84"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i84
+<getchar_n84> jne @3 85 "getchar_n85"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i85
+<getchar_n85> jne @3 86 "getchar_n86"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i86
+<getchar_n86> jne @3 87 "getchar_n87"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i87
+<getchar_n87> jne @3 88 "getchar_n88"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i88
+<getchar_n88> jmp "getchar_out"; @1 @2 $i89
+<getchar_a90> jg @3 99 "getchar_out"; @1 @2 0
+jne @3 90 "getchar_n90"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i90
+<getchar_n90> jne @3 91 "getchar_n91"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i91
+<getchar_n91> jne @3 92 "getchar_n92"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i92
+<getchar_n92> jne @3 93 "getchar_n93"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i93
+<getchar_n93> jne @3 94 "getchar_n94"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i94
+<getchar_n94> jne @3 95 "getchar_n95"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i95
+<getchar_n95> jne @3 96 "getchar_n96"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i96
+<getchar_n96> jne @3 97 "getchar_n97"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i97
+<getchar_n97> jne @3 98 "getchar_n98"; @1 @2 @3
+jmp "getchar_out"; @1 @2 $i98
+<getchar_n98> jmp "getchar_out"; @1 @2 $i99
+exit
+<placebomb> jg @2 9 "placebomb_a10"; @1 @2
+jne @2 0 "placebomb_n0"; @1 @2
+set $b0 3; @1
+jmp "placebomb_out"; @1
+<placebomb_n0> jne @2 1 "placebomb_n1"; @1 @2
+set $b1 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n1> jne @2 2 "placebomb_n2"; @1 @2
+set $b2 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n2> jne @2 3 "placebomb_n3"; @1 @2
+set $b3 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n3> jne @2 4 "placebomb_n4"; @1 @2
+set $b4 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n4> jne @2 5 "placebomb_n5"; @1 @2
+set $b5 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n5> jne @2 6 "placebomb_n6"; @1 @2
+set $b6 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n6> jne @2 7 "placebomb_n7"; @1 @2
+set $b7 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n7> jne @2 8 "placebomb_n8"; @1 @2
+set $b8 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n8> set $b9 52; @1
+jmp "placebomb_out"; @1
+<placebomb_a10> jg @2 19 "placebomb_a20"; @1 @2
+jne @2 10 "placebomb_n10"; @1 @2
+set $b10 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n10> jne @2 11 "placebomb_n11"; @1 @2
+set $b11 87; @1
+jmp "placebomb_out"; @1
+<placebomb_n11> jne @2 12 "placebomb_n12"; @1 @2
+set $b12 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n12> jne @2 13 "placebomb_n13"; @1 @2
+set $b13 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n13> jne @2 14 "placebomb_n14"; @1 @2
+set $b14 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n14> jne @2 15 "placebomb_n15"; @1 @2
+set $b15 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n15> jne @2 16 "placebomb_n16"; @1 @2
+set $b16 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n16> jne @2 17 "placebomb_n17"; @1 @2
+set $b17 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n17> jne @2 18 "placebomb_n18"; @1 @2
+set $b18 73; @1
+jmp "placebomb_out"; @1
+<placebomb_n18> set $b19 80; @1
+jmp "placebomb_out"; @1
+<placebomb_a20> jg @2 29 "placebomb_a30"; @1 @2
+jne @2 20 "placebomb_n20"; @1 @2
+set $b20 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n20> jne @2 21 "placebomb_n21"; @1 @2
+set $b21 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n21> jne @2 22 "placebomb_n22"; @1 @2
+set $b22 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n22> jne @2 23 "placebomb_n23"; @1 @2
+set $b23 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n23> jne @2 24 "placebomb_n24"; @1 @2
+set $b24 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n24> jne @2 25 "placebomb_n25"; @1 @2
+set $b25 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n25> jne @2 26 "placebomb_n26"; @1 @2
+set $b26 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n26> jne @2 27 "placebomb_n27"; @1 @2
+set $b27 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n27> jne @2 28 "placebomb_n28"; @1 @2
+set $b28 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n28> set $b29 66; @1
+jmp "placebomb_out"; @1
+<placebomb_a30> jg @2 39 "placebomb_a40"; @1 @2
+jne @2 30 "placebomb_n30"; @1 @2
+set $b30 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n30> jne @2 31 "placebomb_n31"; @1 @2
+set $b31 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n31> jne @2 32 "placebomb_n32"; @1 @2
+set $b32 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n32> jne @2 33 "placebomb_n33"; @1 @2
+set $b33 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n33> jne @2 34 "placebomb_n34"; @1 @2
+set $b34 3; @1
+jmp "placebomb_out"; @1
+<placebomb_n34> jne @2 35 "placebomb_n35"; @1 @2
+set $b35 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n35> jne @2 36 "placebomb_n36"; @1 @2
+set $b36 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n36> jne @2 37 "placebomb_n37"; @1 @2
+set $b37 73; @1
+jmp "placebomb_out"; @1
+<placebomb_n37> jne @2 38 "placebomb_n38"; @1 @2
+set $b38 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n38> set $b39 87; @1
+jmp "placebomb_out"; @1
+<placebomb_a40> jg @2 49 "placebomb_a50"; @1 @2
+jne @2 40 "placebomb_n40"; @1 @2
+set $b40 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n40> jne @2 41 "placebomb_n41"; @1 @2
+set $b41 66; @1
+jmp "placebomb_out"; @1
+<placebomb_n41> jne @2 42 "placebomb_n42"; @1 @2
+set $b42 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n42> jne @2 43 "placebomb_n43"; @1 @2
+set $b43 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n43> jne @2 44 "placebomb_n44"; @1 @2
+set $b44 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n44> jne @2 45 "placebomb_n45"; @1 @2
+set $b45 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n45> jne @2 46 "placebomb_n46"; @1 @2
+set $b46 3; @1
+jmp "placebomb_out"; @1
+<placebomb_n46> jne @2 47 "placebomb_n47"; @1 @2
+set $b47 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n47> jne @2 48 "placebomb_n48"; @1 @2
+set $b48 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n48> set $b49 3; @1
+jmp "placebomb_out"; @1
+<placebomb_a50> jg @2 59 "placebomb_a60"; @1 @2
+jne @2 50 "placebomb_n50"; @1 @2
+set $b50 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n50> jne @2 51 "placebomb_n51"; @1 @2
+set $b51 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n51> jne @2 52 "placebomb_n52"; @1 @2
+set $b52 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n52> jne @2 53 "placebomb_n53"; @1 @2
+set $b53 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n53> jne @2 54 "placebomb_n54"; @1 @2
+set $b54 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n54> jne @2 55 "placebomb_n55"; @1 @2
+set $b55 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n55> jne @2 56 "placebomb_n56"; @1 @2
+set $b56 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n56> jne @2 57 "placebomb_n57"; @1 @2
+set $b57 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n57> jne @2 58 "placebomb_n58"; @1 @2
+set $b58 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n58> set $b59 87; @1
+jmp "placebomb_out"; @1
+<placebomb_a60> jg @2 69 "placebomb_a70"; @1 @2
+jne @2 60 "placebomb_n60"; @1 @2
+set $b60 45; @1
+jmp "placebomb_out"; @1
+<placebomb_n60> jne @2 61 "placebomb_n61"; @1 @2
+set $b61 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n61> jne @2 62 "placebomb_n62"; @1 @2
+set $b62 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n62> jne @2 63 "placebomb_n63"; @1 @2
+set $b63 45; @1
+jmp "placebomb_out"; @1
+<placebomb_n63> jne @2 64 "placebomb_n64"; @1 @2
+set $b64 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n64> jne @2 65 "placebomb_n65"; @1 @2
+set $b65 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n65> jne @2 66 "placebomb_n66"; @1 @2
+set $b66 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n66> jne @2 67 "placebomb_n67"; @1 @2
+set $b67 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n67> jne @2 68 "placebomb_n68"; @1 @2
+set $b68 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n68> set $b69 10; @1
+jmp "placebomb_out"; @1
+<placebomb_a70> jg @2 79 "placebomb_a80"; @1 @2
+jne @2 70 "placebomb_n70"; @1 @2
+set $b70 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n70> jne @2 71 "placebomb_n71"; @1 @2
+set $b71 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n71> jne @2 72 "placebomb_n72"; @1 @2
+set $b72 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n72> jne @2 73 "placebomb_n73"; @1 @2
+set $b73 17; @1
+jmp "placebomb_out"; @1
+<placebomb_n73> jne @2 74 "placebomb_n74"; @1 @2
+set $b74 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n74> jne @2 75 "placebomb_n75"; @1 @2
+set $b75 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n75> jne @2 76 "placebomb_n76"; @1 @2
+set $b76 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n76> jne @2 77 "placebomb_n77"; @1 @2
+set $b77 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n77> jne @2 78 "placebomb_n78"; @1 @2
+set $b78 45; @1
+jmp "placebomb_out"; @1
+<placebomb_n78> set $b79 59; @1
+jmp "placebomb_out"; @1
+<placebomb_a80> jg @2 89 "placebomb_a90"; @1 @2
+jne @2 80 "placebomb_n80"; @1 @2
+set $b80 73; @1
+jmp "placebomb_out"; @1
+<placebomb_n80> jne @2 81 "placebomb_n81"; @1 @2
+set $b81 94; @1
+jmp "placebomb_out"; @1
+<placebomb_n81> jne @2 82 "placebomb_n82"; @1 @2
+set $b82 87; @1
+jmp "placebomb_out"; @1
+<placebomb_n82> jne @2 83 "placebomb_n83"; @1 @2
+set $b83 87; @1
+jmp "placebomb_out"; @1
+<placebomb_n83> jne @2 84 "placebomb_n84"; @1 @2
+set $b84 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n84> jne @2 85 "placebomb_n85"; @1 @2
+set $b85 45; @1
+jmp "placebomb_out"; @1
+<placebomb_n85> jne @2 86 "placebomb_n86"; @1 @2
+set $b86 45; @1
+jmp "placebomb_out"; @1
+<placebomb_n86> jne @2 87 "placebomb_n87"; @1 @2
+set $b87 87; @1
+jmp "placebomb_out"; @1
+<placebomb_n87> jne @2 88 "placebomb_n88"; @1 @2
+set $b88 31; @1
+jmp "placebomb_out"; @1
+<placebomb_n88> set $b89 31; @1
+jmp "placebomb_out"; @1
+<placebomb_a90> jg @2 99 "placebomb_out"; @1 @2
+jne @2 90 "placebomb_n90"; @1 @2
+set $b90 38; @1
+jmp "placebomb_out"; @1
+<placebomb_n90> jne @2 91 "placebomb_n91"; @1 @2
+set $b91 80; @1
+jmp "placebomb_out"; @1
+<placebomb_n91> jne @2 92 "placebomb_n92"; @1 @2
+set $b92 52; @1
+jmp "placebomb_out"; @1
+<placebomb_n92> jne @2 93 "placebomb_n93"; @1 @2
+set $b93 73; @1
+jmp "placebomb_out"; @1
+<placebomb_n93> jne @2 94 "placebomb_n94"; @1 @2
+set $b94 3; @1
+jmp "placebomb_out"; @1
+<placebomb_n94> jne @2 95 "placebomb_n95"; @1 @2
+set $b95 59; @1
+jmp "placebomb_out"; @1
+<placebomb_n95> jne @2 96 "placebomb_n96"; @1 @2
+set $b96 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n96> jne @2 97 "placebomb_n97"; @1 @2
+set $b97 10; @1
+jmp "placebomb_out"; @1
+<placebomb_n97> jne @2 98 "placebomb_n98"; @1 @2
+set $b98 24; @1
+jmp "placebomb_out"; @1
+<placebomb_n98> set $b99 87; @1
+jmp "placebomb_out"; @1
+exit
+<parseloop> nop; 0 0 // i, jump_tmp, bomb_jump_target
+<parseloop_start> jmp "getchar"; @1 @2 @1 // @3 = char code
+<getchar_out> jz @3 "parse_finish"; @1 @2 @3 // jump out if finished
+jl @3 49 "parseloop_invalid"; @1 @2 @3
+jg @3 57 "parseloop_invalid"; @1 @2 @3
+sub @3 49 @3; @1 @2
+jmp "parseloop_ok_char"; @1 @2 @3 // jump to echo
+<parseloop_invalid> nop; @1 @2 5
+add @1 @3 @3; @1 @2 @3
+mul @3 3 @3; @1 @2 @3
+mod @3 7 @3; @1 @2 @3
+add @3 81 @3; @1 @2 @3
+<parseloop_ok_char> mod @1 2 @4; @1 @2 @3
+jnz @4 "parseloop_place_bomb"; @1 @2 @3 // decide
+set @2 @3; @1 @2
+mul @2 9 @2; @1 @2
+jmp "parseloop_inc"; @1 @2
+<parseloop_place_bomb> add @2 @3 @2; @1
+jmp "placebomb"; @1 @2
+<placebomb_out> nop; @1
+<parseloop_inc> add @1 1 @1; @1 @2
+jmp "parseloop_start"; @1 @2
+<getbomb> jg @5 9 "getbomb_a10"; @1 @2 @3 @4 @5 @6 // get bomb value, keeps @1-4, pos @5, return loc @6 returns at @5
+jne @5 0 "getbomb_n0"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b0 @6
+<getbomb_n0> jne @5 1 "getbomb_n1"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b1 @6
+<getbomb_n1> jne @5 2 "getbomb_n2"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b2 @6
+<getbomb_n2> jne @5 3 "getbomb_n3"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b3 @6
+<getbomb_n3> jne @5 4 "getbomb_n4"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b4 @6
+<getbomb_n4> jne @5 5 "getbomb_n5"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b5 @6
+<getbomb_n5> jne @5 6 "getbomb_n6"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b6 @6
+<getbomb_n6> jne @5 7 "getbomb_n7"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b7 @6
+<getbomb_n7> jne @5 8 "getbomb_n8"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b8 @6
+<getbomb_n8> jmp "getbomb_out"; @1 @2 @3 @4 $b9 @6
+<getbomb_a10> jg @5 19 "getbomb_a20"; @1 @2 @3 @4 @5 @6
+jne @5 10 "getbomb_n10"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b10 @6
+<getbomb_n10> jne @5 11 "getbomb_n11"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b11 @6
+<getbomb_n11> jne @5 12 "getbomb_n12"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b12 @6
+<getbomb_n12> jne @5 13 "getbomb_n13"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b13 @6
+<getbomb_n13> jne @5 14 "getbomb_n14"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b14 @6
+<getbomb_n14> jne @5 15 "getbomb_n15"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b15 @6
+<getbomb_n15> jne @5 16 "getbomb_n16"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b16 @6
+<getbomb_n16> jne @5 17 "getbomb_n17"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b17 @6
+<getbomb_n17> jne @5 18 "getbomb_n18"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b18 @6
+<getbomb_n18> jmp "getbomb_out"; @1 @2 @3 @4 $b19 @6
+<getbomb_a20> jg @5 29 "getbomb_a30"; @1 @2 @3 @4 @5 @6
+jne @5 20 "getbomb_n20"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b20 @6
+<getbomb_n20> jne @5 21 "getbomb_n21"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b21 @6
+<getbomb_n21> jne @5 22 "getbomb_n22"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b22 @6
+<getbomb_n22> jne @5 23 "getbomb_n23"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b23 @6
+<getbomb_n23> jne @5 24 "getbomb_n24"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b24 @6
+<getbomb_n24> jne @5 25 "getbomb_n25"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b25 @6
+<getbomb_n25> jne @5 26 "getbomb_n26"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b26 @6
+<getbomb_n26> jne @5 27 "getbomb_n27"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b27 @6
+<getbomb_n27> jne @5 28 "getbomb_n28"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b28 @6
+<getbomb_n28> jmp "getbomb_out"; @1 @2 @3 @4 $b29 @6
+<getbomb_a30> jg @5 39 "getbomb_a40"; @1 @2 @3 @4 @5 @6
+jne @5 30 "getbomb_n30"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b30 @6
+<getbomb_n30> jne @5 31 "getbomb_n31"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b31 @6
+<getbomb_n31> jne @5 32 "getbomb_n32"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b32 @6
+<getbomb_n32> jne @5 33 "getbomb_n33"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b33 @6
+<getbomb_n33> jne @5 34 "getbomb_n34"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b34 @6
+<getbomb_n34> jne @5 35 "getbomb_n35"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b35 @6
+<getbomb_n35> jne @5 36 "getbomb_n36"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b36 @6
+<getbomb_n36> jne @5 37 "getbomb_n37"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b37 @6
+<getbomb_n37> jne @5 38 "getbomb_n38"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b38 @6
+<getbomb_n38> jmp "getbomb_out"; @1 @2 @3 @4 $b39 @6
+<getbomb_a40> jg @5 49 "getbomb_a50"; @1 @2 @3 @4 @5 @6
+jne @5 40 "getbomb_n40"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b40 @6
+<getbomb_n40> jne @5 41 "getbomb_n41"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b41 @6
+<getbomb_n41> jne @5 42 "getbomb_n42"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b42 @6
+<getbomb_n42> jne @5 43 "getbomb_n43"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b43 @6
+<getbomb_n43> jne @5 44 "getbomb_n44"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b44 @6
+<getbomb_n44> jne @5 45 "getbomb_n45"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b45 @6
+<getbomb_n45> jne @5 46 "getbomb_n46"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b46 @6
+<getbomb_n46> jne @5 47 "getbomb_n47"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b47 @6
+<getbomb_n47> jne @5 48 "getbomb_n48"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b48 @6
+<getbomb_n48> jmp "getbomb_out"; @1 @2 @3 @4 $b49 @6
+<getbomb_a50> jg @5 59 "getbomb_a60"; @1 @2 @3 @4 @5 @6
+jne @5 50 "getbomb_n50"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b50 @6
+<getbomb_n50> jne @5 51 "getbomb_n51"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b51 @6
+<getbomb_n51> jne @5 52 "getbomb_n52"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b52 @6
+<getbomb_n52> jne @5 53 "getbomb_n53"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b53 @6
+<getbomb_n53> jne @5 54 "getbomb_n54"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b54 @6
+<getbomb_n54> jne @5 55 "getbomb_n55"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b55 @6
+<getbomb_n55> jne @5 56 "getbomb_n56"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b56 @6
+<getbomb_n56> jne @5 57 "getbomb_n57"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b57 @6
+<getbomb_n57> jne @5 58 "getbomb_n58"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b58 @6
+<getbomb_n58> jmp "getbomb_out"; @1 @2 @3 @4 $b59 @6
+<getbomb_a60> jg @5 69 "getbomb_a70"; @1 @2 @3 @4 @5 @6
+jne @5 60 "getbomb_n60"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b60 @6
+<getbomb_n60> jne @5 61 "getbomb_n61"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b61 @6
+<getbomb_n61> jne @5 62 "getbomb_n62"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b62 @6
+<getbomb_n62> jne @5 63 "getbomb_n63"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b63 @6
+<getbomb_n63> jne @5 64 "getbomb_n64"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b64 @6
+<getbomb_n64> jne @5 65 "getbomb_n65"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b65 @6
+<getbomb_n65> jne @5 66 "getbomb_n66"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b66 @6
+<getbomb_n66> jne @5 67 "getbomb_n67"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b67 @6
+<getbomb_n67> jne @5 68 "getbomb_n68"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b68 @6
+<getbomb_n68> jmp "getbomb_out"; @1 @2 @3 @4 $b69 @6
+<getbomb_a70> jg @5 79 "getbomb_a80"; @1 @2 @3 @4 @5 @6
+jne @5 70 "getbomb_n70"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b70 @6
+<getbomb_n70> jne @5 71 "getbomb_n71"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b71 @6
+<getbomb_n71> jne @5 72 "getbomb_n72"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b72 @6
+<getbomb_n72> jne @5 73 "getbomb_n73"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b73 @6
+<getbomb_n73> jne @5 74 "getbomb_n74"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b74 @6
+<getbomb_n74> jne @5 75 "getbomb_n75"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b75 @6
+<getbomb_n75> jne @5 76 "getbomb_n76"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b76 @6
+<getbomb_n76> jne @5 77 "getbomb_n77"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b77 @6
+<getbomb_n77> jne @5 78 "getbomb_n78"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b78 @6
+<getbomb_n78> jmp "getbomb_out"; @1 @2 @3 @4 $b79 @6
+<getbomb_a80> jg @5 89 "getbomb_a90"; @1 @2 @3 @4 @5 @6
+jne @5 80 "getbomb_n80"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b80 @6
+<getbomb_n80> jne @5 81 "getbomb_n81"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b81 @6
+<getbomb_n81> jne @5 82 "getbomb_n82"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b82 @6
+<getbomb_n82> jne @5 83 "getbomb_n83"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b83 @6
+<getbomb_n83> jne @5 84 "getbomb_n84"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b84 @6
+<getbomb_n84> jne @5 85 "getbomb_n85"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b85 @6
+<getbomb_n85> jne @5 86 "getbomb_n86"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b86 @6
+<getbomb_n86> jne @5 87 "getbomb_n87"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b87 @6
+<getbomb_n87> jne @5 88 "getbomb_n88"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b88 @6
+<getbomb_n88> jmp "getbomb_out"; @1 @2 @3 @4 $b89 @6
+<getbomb_a90> jg @5 99 "getbomb_out"; @1 @2 @3 @4 @5 @6
+jne @5 90 "getbomb_n90"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b90 @6
+<getbomb_n90> jne @5 91 "getbomb_n91"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b91 @6
+<getbomb_n91> jne @5 92 "getbomb_n92"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b92 @6
+<getbomb_n92> jne @5 93 "getbomb_n93"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b93 @6
+<getbomb_n93> jne @5 94 "getbomb_n94"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b94 @6
+<getbomb_n94> jne @5 95 "getbomb_n95"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b95 @6
+<getbomb_n95> jne @5 96 "getbomb_n96"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b96 @6
+<getbomb_n96> jne @5 97 "getbomb_n97"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b97 @6
+<getbomb_n97> jne @5 98 "getbomb_n98"; @1 @2 @3 @4 @5 @6
+jmp "getbomb_out"; @1 @2 @3 @4 $b98 @6
+<getbomb_n98> jmp "getbomb_out"; @1 @2 @3 @4 $b99 @6
+<getbomb_out> je @6 0 "getbomb_out0"; @1 @2 @3 @4 @5
+exit // invalid jump
+<adj_bomb> nop; @1 @2 0 0 @2 // adjacency check, return loc @1, pos @2, @3 = i, @4 = accum
+<adj_bomb_start> jne @3 0 "adj_bomb_1"; @1 @2 @3 @4 @5
+mod @5 9 @6; @1 @2 @3 @4 @5 // check left x
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+div @5 9 @6; @1 @2 @3 @4 @5 // check top y
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+sub @5 10 @5; @1 @2 @3 @4 @5 // top left
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_1> jne @3 1 "adj_bomb_2"; @1 @2 @3 @4 @5
+div @5 9 @6; @1 @2 @3 @4 @5 // check top y
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+sub @5 9 @5; @1 @2 @3 @4 @5 // top middle
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_2> jne @3 2 "adj_bomb_3"; @1 @2 @3 @4 @5
+mod @5 9 @6; @1 @2 @3 @4 @5 // check right x
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+div @5 9 @6; @1 @2 @3 @4 @5 // check top y
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+sub @5 8 @5; @1 @2 @3 @4 @5 // top right
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_3> jne @3 3 "adj_bomb_4"; @1 @2 @3 @4 @5
+mod @5 9 @6; @1 @2 @3 @4 @5 // check left x
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+sub @5 1 @5; @1 @2 @3 @4 @5 // left
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_4> jne @3 4 "adj_bomb_5"; @1 @2 @3 @4 @5
+mod @5 9 @6; @1 @2 @3 @4 @5 // check right x
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+add @5 1 @5; @1 @2 @3 @4 @5 // right
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_5> jne @3 5 "adj_bomb_6"; @1 @2 @3 @4 @5
+mod @5 9 @6; @1 @2 @3 @4 @5 // check left x
+jl @6 1 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+div @5 9 @6; @1 @2 @3 @4 @5 // check bottom y
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+add @5 8 @5; @1 @2 @3 @4 @5 // bottom left
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_6> jne @3 6 "adj_bomb_7"; @1 @2 @3 @4 @5
+div @5 9 @6; @1 @2 @3 @4 @5 // check bottom y
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+add @5 9 @5; @1 @2 @3 @4 @5 // bottom middle
+jmp "adj_bomb_calc"; @1 @2 @3 @4 @5
+<adj_bomb_7> jne @3 7 "adj_finish"; @1 @2 @3 @4 @5 // jump out
+mod @5 9 @6; @1 @2 @3 @4 @5 // check right x
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+div @5 9 @6; @1 @2 @3 @4 @5 // check bottom y
+jg @6 7 "adj_bomb_inc"; @1 @2 @3 @4 @5 // fail
+add @5 10 @5; @1 @2 @3 @4 @5 // bottom right
+<adj_bomb_calc> jmp "getbomb"; @1 @2 @3 @4 @5 0 // offseted, get mine number
+<getbomb_out0> mod @5 7 @5; @1 @2 @3 @4 // @5 = mine number, has mine = mine % 7 = 3
+jne @5 3 "adj_bomb_inc"; @1 @2 @3 @4
+add @4 1 @4; @1 @2 @3 @4
+<adj_bomb_inc> add @3 1 @3; @1 @2 @3 @4
+jmp "adj_bomb_start"; @1 @2 @3 @4 @2
+<adj_finish> nop; @1 @4 // return at @2
+je @1 0 "adj_out0"; @1 @2
+je @1 1 "adj_out1"; @1 @2
+je @1 2 "adj_out2"; @1 @2
+je @1 3 "adj_out3"; @1 @2
+je @1 4 "adj_out4"; @1 @2
+je @1 5 "adj_out5"; @1 @2
+je @1 6 "adj_out6"; @1 @2
+je @1 7 "adj_out7"; @1 @2
+je @1 8 "adj_out8"; @1 @2
+je @1 9 "adj_out9"; @1 @2
+je @1 10 "adj_out10"; @1 @2
+je @1 11 "adj_out11"; @1 @2
+je @1 12 "adj_out12"; @1 @2
+je @1 13 "adj_out13"; @1 @2
+exit // invalid jump
+<parse_finish> nop
+jmp "adj_bomb"; 0 57 // adjacency checks
+<adj_out0> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 1 24
+<adj_out1> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 2 49
+<adj_out2> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 3 46
+<adj_out3> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 4 11
+<adj_out4> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 5 47
+<adj_out5> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 6 56
+<adj_out6> nop; $c0 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c0
+jmp "adj_bomb"; 7 35
+<adj_out7> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 8 66
+<adj_out8> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 9 50
+<adj_out9> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 10 19
+<adj_out10> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 11 79
+<adj_out11> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 12 21
+<adj_out12> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+jmp "adj_bomb"; 13 41
+<adj_out13> nop; $c1 @2
+mul @1 11 @1; @1 @2
+add @1 @2 $c1
+nop // echo $c0 1820085546
+nop // echo $c1 1410707190
+mod $b66 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b19 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b57 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b41 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b79 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b47 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b50 7 @1
+mul $c2 13 @2; @1
+add @1 @2 $c2;
+mod $b46 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b21 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b11 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b49 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b35 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b24 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+mod $b56 7 @1
+mul $c3 13 @2; @1
+add @1 @2 $c3;
+nop // echo $c2 972076578
+nop // echo $c3 1718772620
+add $b31 2 @1
+je @1 62 "skip_31"
+add $rows 1000 $rows
+add $cols 10000 $cols
+add $squares 10000 $squares
+<skip_31> add $b72 5 @1
+je @1 90 "skip_72"
+add $rows 100000000 $rows
+add $cols 1 $cols
+add $squares 1000000 $squares
+<skip_72> add $b61 6 @1
+je @1 101 "skip_61"
+add $rows 1000000 $rows
+add $cols 10000000 $cols
+add $squares 100000000 $squares
+<skip_61> add $b71 2 @1
+je @1 39 "skip_71"
+add $rows 10000000 $rows
+add $cols 100000000 $cols
+add $squares 100000000 $squares
+<skip_71> add $b42 3 @1
+je @1 61 "skip_42"
+add $rows 10000 $rows
+add $cols 1000000 $cols
+add $squares 100000 $squares
+<skip_42> add $b11 1 @1
+je @1 80 "skip_11"
+add $rows 10 $rows
+add $cols 100 $cols
+add $squares 1 $squares
+<skip_11> add $b34 8 @1
+je @1 48 "skip_34"
+add $rows 1000 $rows
+add $cols 10000000 $cols
+add $squares 100000 $squares
+<skip_34> add $b5 2 @1
+je @1 35 "skip_5"
+add $rows 1 $rows
+add $cols 100000 $cols
+add $squares 10 $squares
+<skip_5> add $b8 4 @1
+je @1 94 "skip_8"
+add $rows 1 $rows
+add $cols 100000000 $cols
+add $squares 100 $squares
+<skip_8> add $b77 3 @1
+je @1 64 "skip_77"
+add $rows 100000000 $rows
+add $cols 100000 $cols
+add $squares 10000000 $squares
+<skip_77> add $b3 5 @1
+je @1 39 "skip_3"
+add $rows 1 $rows
+add $cols 1000 $cols
+add $squares 10 $squares
+<skip_3> add $b51 4 @1
+je @1 71 "skip_51"
+add $rows 100000 $rows
+add $cols 1000000 $cols
+add $squares 100000 $squares
+<skip_51> add $b73 5 @1
+je @1 93 "skip_73"
+add $rows 100000000 $rows
+add $cols 10 $cols
+add $squares 1000000 $squares
+<skip_73> add $b29 5 @1
+je @1 65 "skip_29"
+add $rows 1000 $rows
+add $cols 100 $cols
+add $squares 1000 $squares
+<skip_29> add $b59 8 @1
+je @1 56 "skip_59"
+add $rows 1000000 $rows
+add $cols 100000 $cols
+add $squares 10000000 $squares
+<skip_59> add $b1 1 @1
+je @1 77 "skip_1"
+add $rows 1 $rows
+add $cols 10 $cols
+add $squares 1 $squares
+<skip_1> add $b54 6 @1
+je @1 95 "skip_54"
+add $rows 1000000 $rows
+add $cols 1 $cols
+add $squares 1000000 $squares
+<skip_54> add $b33 10 @1
+je @1 61 "skip_33"
+add $rows 1000 $rows
+add $cols 1000000 $cols
+add $squares 100000 $squares
+<skip_33> add $b64 3 @1
+je @1 54 "skip_64"
+add $rows 10000000 $rows
+add $cols 10 $cols
+add $squares 1000000 $squares
+<skip_64> add $b39 3 @1
+je @1 96 "skip_39"
+add $rows 10000 $rows
+add $cols 1000 $cols
+add $squares 10000 $squares
+<skip_39> add $b53 5 @1
+je @1 87 "skip_53"
+add $rows 100000 $rows
+add $cols 100000000 $cols
+add $squares 100000 $squares
+<skip_53> add $b47 4 @1
+je @1 86 "skip_47"
+add $rows 100000 $rows
+add $cols 100 $cols
+add $squares 1000 $squares
+<skip_47> add $b57 3 @1
+je @1 46 "skip_57"
+add $rows 1000000 $rows
+add $cols 1000 $cols
+add $squares 10000000 $squares
+<skip_57> add $b66 5 @1
+je @1 46 "skip_66"
+add $rows 10000000 $rows
+add $cols 1000 $cols
+add $squares 10000000 $squares
+<skip_66> add $b12 7 @1
+je @1 46 "skip_12"
+add $rows 10 $rows
+add $cols 1000 $cols
+add $squares 10 $squares
+<skip_12> add $b58 10 @1
+je @1 66 "skip_58"
+add $rows 1000000 $rows
+add $cols 10000 $cols
+add $squares 10000000 $squares
+<skip_58> add $b43 3 @1
+je @1 39 "skip_43"
+add $rows 10000 $rows
+add $cols 10000000 $cols
+add $squares 100000 $squares
+<skip_43> add $b28 8 @1
+je @1 106 "skip_28"
+add $rows 1000 $rows
+add $cols 10 $cols
+add $squares 1000 $squares
+<skip_28> add $b10 7 @1
+je @1 50 "skip_10"
+add $rows 10 $rows
+add $cols 10 $cols
+add $squares 1 $squares
+<skip_10> add $b37 8 @1
+je @1 105 "skip_37"
+add $rows 10000 $rows
+add $cols 10 $cols
+add $squares 1000 $squares
+<skip_37> add $b49 6 @1
+je @1 90 "skip_49"
+add $rows 100000 $rows
+add $cols 10000 $cols
+add $squares 10000 $squares
+<skip_49> add $b74 9 @1
+je @1 80 "skip_74"
+add $rows 100000000 $rows
+add $cols 100 $cols
+add $squares 1000000 $squares
+<skip_74> add $b26 7 @1
+je @1 99 "skip_26"
+add $rows 100 $rows
+add $cols 100000000 $cols
+add $squares 100 $squares
+<skip_26> add $b20 9 @1
+je @1 66 "skip_20"
+add $rows 100 $rows
+add $cols 100 $cols
+add $squares 1 $squares
+<skip_20> add $b76 10 @1
+je @1 77 "skip_76"
+add $rows 100000000 $rows
+add $cols 10000 $cols
+add $squares 10000000 $squares
+<skip_76> add $b15 9 @1
+je @1 84 "skip_15"
+add $rows 10 $rows
+add $cols 1000000 $cols
+add $squares 100 $squares
+<skip_15> add $b65 2 @1
+je @1 84 "skip_65"
+add $rows 10000000 $rows
+add $cols 100 $cols
+add $squares 1000000 $squares
+<skip_65> add $b18 9 @1
+je @1 98 "skip_18"
+add $rows 100 $rows
+add $cols 1 $cols
+add $squares 1 $squares
+<skip_18> add $b79 3 @1
+je @1 42 "skip_79"
+add $rows 100000000 $rows
+add $cols 10000000 $cols
+add $squares 100000000 $squares
+<skip_79> add $b62 3 @1
+je @1 42 "skip_62"
+add $rows 1000000 $rows
+add $cols 100000000 $cols
+add $squares 100000000 $squares
+<skip_62> add $b45 3 @1
+je @1 57 "skip_45"
+add $rows 100000 $rows
+add $cols 1 $cols
+add $squares 1000 $squares
+<skip_45> add $b70 2 @1
+je @1 63 "skip_70"
+add $rows 10000000 $rows
+add $cols 10000000 $cols
+add $squares 100000000 $squares
+<skip_70> add $b35 8 @1
+je @1 65 "skip_35"
+add $rows 1000 $rows
+add $cols 100000000 $cols
+add $squares 100000 $squares
+<skip_35> add $b55 9 @1
+je @1 70 "skip_55"
+add $rows 1000000 $rows
+add $cols 10 $cols
+add $squares 1000000 $squares
+<skip_55> add $b24 10 @1
+je @1 75 "skip_24"
+add $rows 100 $rows
+add $cols 1000000 $cols
+add $squares 100 $squares
+<skip_24> add $b25 5 @1
+je @1 97 "skip_25"
+add $rows 100 $rows
+add $cols 10000000 $cols
+add $squares 100 $squares
+<skip_25> add $b68 8 @1
+je @1 52 "skip_68"
+add $rows 10000000 $rows
+add $cols 100000 $cols
+add $squares 10000000 $squares
+<skip_68> add $b36 8 @1
+je @1 47 "skip_36"
+add $rows 10000 $rows
+add $cols 1 $cols
+add $squares 1000 $squares
+<skip_36> add $b67 8 @1
+je @1 87 "skip_67"
+add $rows 10000000 $rows
+add $cols 10000 $cols
+add $squares 10000000 $squares
+<skip_67> add $b38 2 @1
+je @1 98 "skip_38"
+add $rows 10000 $rows
+add $cols 100 $cols
+add $squares 1000 $squares
+<skip_38> add $b2 1 @1
+je @1 34 "skip_2"
+add $rows 1 $rows
+add $cols 100 $cols
+add $squares 1 $squares
+<skip_2> add $b13 1 @1
+je @1 94 "skip_13"
+add $rows 10 $rows
+add $cols 10000 $cols
+add $squares 10 $squares
+<skip_13> add $b63 7 @1
+je @1 46 "skip_63"
+add $rows 10000000 $rows
+add $cols 1 $cols
+add $squares 1000000 $squares
+<skip_63> add $b56 5 @1
+je @1 102 "skip_56"
+add $rows 1000000 $rows
+add $cols 100 $cols
+add $squares 1000000 $squares
+<skip_56> add $b78 8 @1
+je @1 107 "skip_78"
+add $rows 100000000 $rows
+add $cols 1000000 $cols
+add $squares 100000000 $squares
+<skip_78> add $b32 9 @1
+je @1 46 "skip_32"
+add $rows 1000 $rows
+add $cols 100000 $cols
+add $squares 10000 $squares
+<skip_32> add $b46 4 @1
+je @1 65 "skip_46"
+add $rows 100000 $rows
+add $cols 10 $cols
+add $squares 1000 $squares
+<skip_46> add $b17 5 @1
+je @1 56 "skip_17"
+add $rows 10 $rows
+add $cols 100000000 $cols
+add $squares 100 $squares
+<skip_17> add $b19 10 @1
+je @1 43 "skip_19"
+add $rows 100 $rows
+add $cols 10 $cols
+add $squares 1 $squares
+<skip_19> add $b44 3 @1
+je @1 88 "skip_44"
+add $rows 10000 $rows
+add $cols 100000000 $cols
+add $squares 100000 $squares
+<skip_44> add $b40 8 @1
+je @1 48 "skip_40"
+add $rows 10000 $rows
+add $cols 10000 $cols
+add $squares 10000 $squares
+<skip_40> add $b80 5 @1
+je @1 68 "skip_80"
+add $rows 100000000 $rows
+add $cols 100000000 $cols
+add $squares 100000000 $squares
+<skip_80> add $b9 3 @1
+je @1 33 "skip_9"
+add $rows 10 $rows
+add $cols 1 $cols
+add $squares 1 $squares
+<skip_9> add $b41 8 @1
+je @1 107 "skip_41"
+add $rows 10000 $rows
+add $cols 100000 $cols
+add $squares 10000 $squares
+<skip_41> add $b14 7 @1
+je @1 65 "skip_14"
+add $rows 10 $rows
+add $cols 100000 $cols
+add $squares 10 $squares
+<skip_14> add $b7 7 @1
+je @1 105 "skip_7"
+add $rows 1 $rows
+add $cols 10000000 $cols
+add $squares 100 $squares
+<skip_7> add $b48 6 @1
+je @1 82 "skip_48"
+add $rows 100000 $rows
+add $cols 1000 $cols
+add $squares 10000 $squares
+<skip_48> add $b60 5 @1
+je @1 44 "skip_60"
+add $rows 1000000 $rows
+add $cols 1000000 $cols
+add $squares 100000000 $squares
+<skip_60> add $b75 1 @1
+je @1 76 "skip_75"
+add $rows 100000000 $rows
+add $cols 1000 $cols
+add $squares 10000000 $squares
+<skip_75> add $b50 3 @1
+je @1 78 "skip_50"
+add $rows 100000 $rows
+add $cols 100000 $cols
+add $squares 10000 $squares
+<skip_50> add $b6 6 @1
+je @1 71 "skip_6"
+add $rows 1 $rows
+add $cols 1000000 $cols
+add $squares 100 $squares
+<skip_6> add $b27 1 @1
+je @1 40 "skip_27"
+add $rows 1000 $rows
+add $cols 1 $cols
+add $squares 1000 $squares
+<skip_27> add $b21 10 @1
+je @1 60 "skip_21"
+add $rows 100 $rows
+add $cols 1000 $cols
+add $squares 10 $squares
+<skip_21> add $b30 1 @1
+je @1 64 "skip_30"
+add $rows 1000 $rows
+add $cols 1000 $cols
+add $squares 10000 $squares
+<skip_30> add $b23 2 @1
+je @1 58 "skip_23"
+add $rows 100 $rows
+add $cols 100000 $cols
+add $squares 10 $squares
+<skip_23> add $b69 9 @1
+je @1 94 "skip_69"
+add $rows 10000000 $rows
+add $cols 1000000 $cols
+add $squares 100000000 $squares
+<skip_69> add $b4 1 @1
+je @1 32 "skip_4"
+add $rows 1 $rows
+add $cols 10000 $cols
+add $squares 10 $squares
+<skip_4> add $b0 9 @1
+je @1 62 "skip_0"
+add $rows 1 $rows
+add $cols 1 $cols
+add $squares 1 $squares
+<skip_0> add $b52 8 @1
+je @1 57 "skip_52"
+add $rows 100000 $rows
+add $cols 10000000 $cols
+add $squares 100000 $squares
+<skip_52> add $b16 8 @1
+je @1 84 "skip_16"
+add $rows 10 $rows
+add $cols 10000000 $cols
+add $squares 100 $squares
+<skip_16> add $b22 1 @1
+je @1 51 "skip_22"
+add $rows 100 $rows
+add $cols 10000 $cols
+add $squares 10 $squares
+<skip_22> check $c0 $c1 $c2 $c3 $rows $cols $squares "correct" "incorrect"
+<correct> echo "Correct!"
+decrypt
+print_flag
+exit
+<incorrect> echo "Incorrect!"
+exit
+add $b86 3 @1 // dead code
+mod $b96 7 @1
+mod $b91 7 @1
+mod $b88 7 @1
+add $b97 3 @1
+add $b84 2 @1
+mod $b94 7 @1
+mod $b83 7 @1
+add $b98 8 @1
+add $b91 2 @1
+mod $b90 7 @1
+mod $b98 7 @1
+add $b82 1 @1
+mod $b85 7 @1
+add $b90 7 @1
+add $b92 3 @1
+mod $b82 7 @1
+add $b93 4 @1
+add $b89 3 @1
+mod $b86 7 @1
+mod $b95 7 @1
+mod $b89 7 @1
+add $b87 5 @1
+mod $b97 7 @1
+mod $b93 7 @1
+add $b99 1 @1
+mod $b92 7 @1
+add $b96 6 @1
+add $b85 7 @1
+mod $b84 7 @1
+add $b83 7 @1
+add $b94 6 @1
+add $b88 8 @1
+mod $b99 7 @1
+add $b95 2 @1
+mod $b87 7 @1

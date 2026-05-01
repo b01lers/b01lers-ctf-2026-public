@@ -1,0 +1,69 @@
+000500ca      sub_a762(*(arg1 - 0x460c))
+000500e1      char* nptr
+000500e1
+000500e1      if (getenv(name: "i45") == 0)
+000500f4          nptr = "0"
+000500e1      else
+000500ed          nptr = getenv(name: "i45")
+000500ed
+000500fe      int32_t rax_2 = atoi(nptr)
+00050134      snprintf(s: arg1 - 0x100, maxlen: 0xc8, format: "./chall $LINENO 4766 %d %d %d", zx.q(*(arg1 - 0x45d0)), zx.q(*(arg1 - 0x45cc)), zx.q(rax_2))
+00050139      int32_t rax_5 = data_abe98
+00050142      data_abe98 = rax_5 + 1
+0005015e      write_line(arg1 - 0x100, rax_5 + *(arg1 - 0x460c))
+00050168      close_and_exit(0)
+00050168      noreturn
+
+
+0005016d  void sub_5016d(void* arg1 @ rbp) __noreturn
+
+00050179      sub_a762(*(arg1 - 0x460c))
+00050190      char* nptr
+00050190
+00050190      if (getenv(name: "g_2189") == 0)
+000501a3          nptr = "0"
+00050190      else
+0005019c          nptr = getenv(name: "g_2189")
+0005019c
+000501b5      *(arg1 - 0x45d0) = atoi(nptr) + 5
+000501de      snprintf(s: arg1 - 0x100, maxlen: 0xc8, format: "./chall $LINENO 4245 %d", zx.q(*(arg1 - 0x45d0)))
+000501e3      int32_t rax_6 = data_abe98
+000501ec      data_abe98 = rax_6 + 1
+00050208      write_line(arg1 - 0x100, rax_6 + *(arg1 - 0x460c))
+00050212      close_and_exit(0)
+00050212      noreturn
+
+
+00050217  void sub_50217(void* arg1 @ rbp) __noreturn
+
+00050223      sub_a762(*(arg1 - 0x460c))
+00050228      *(arg1 - 0x4604) = 0x11
+00050255      snprintf(s: arg1 - 0x100, maxlen: 0xc8, format: "export g_7833=%d", zx.q(*(arg1 - 0x4604)))
+0005025a      int32_t rax_3 = data_abe98
+00050263      data_abe98 = rax_3 + 1
+0005027f      write_line(arg1 - 0x100, rax_3 + *(arg1 - 0x460c))
+000502a7      snprintf(s: arg1 - 0x100, maxlen: 0xc8, format: "./chall $LINENO 7663 %d", zx.q(*(arg1 - 0x45d0)))
+000502ac      int32_t rax_8 = data_abe98
+000502b5      data_abe98 = rax_8 + 1
+000502d1      write_line(arg1 - 0x100, rax_8 + *(arg1 - 0x460c))
+000502db      close_and_exit(0)
+000502db      noreturn
+
+
+000502e0  void sub_502e0(void* arg1 @ rbp) __noreturn
+
+000502ec      sub_a762(*(arg1 - 0x460c))
+00050303      char* nptr
+00050303
+00050303      if (getenv(name: "g_4158") == 0)
+00050316          nptr = "0"
+00050303      else
+0005030f          nptr = getenv(name: "g_4158")
+0005030f
+0005034a      *(arg1 - 0x45d0) = atoi(nptr) s% 7
+00050373      snprintf(s: arg1 - 0x100, maxlen: 0xc8, format: "./chall $LINENO 6300 %d", zx.q(*(arg1 - 0x45d0)))
+00050378      int32_t rax_6 = data_abe98
+00050381      data_abe98 = rax_6 + 1
+0005039d      write_line(arg1 - 0x100, rax_6 + *(arg1 - 0x460c))
+000503a7      close_and_exit(0)
+000503a7      noreturn

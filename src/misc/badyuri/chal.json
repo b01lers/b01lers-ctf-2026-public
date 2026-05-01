@@ -1,0 +1,9 @@
+{
+    "name": "badyuri",
+    "author": "draconixia, hiki",
+    "description": "Corporate wants you to find the difference between these two files. They are not the same file.",
+    "flag": "bctf{w3_l0ve_yur1_rB4DN8aULH9}",
+    "difficulty": "easy",
+    "tags": ["beginner"],
+    "can_be_auto_deployed": false
+}

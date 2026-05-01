@@ -1,0 +1,9 @@
+{
+    "name": "kyoto_protocol",
+    "author": "tillvit",
+    "description": "bash head with pipe",
+    "flag": "bctf{im_bash_ijng_it._Yeahhg_:3}",
+    "difficulty": "impossible",
+    "can_be_auto_deployed": false,
+    "ports": []
+}

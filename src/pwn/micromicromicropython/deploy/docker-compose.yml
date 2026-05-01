@@ -1,0 +1,8 @@
+services:
+  micromicromicropy:
+    build:
+      dockerfile: ./Dockerfile
+      context: ../src
+    ports:
+      - "5000:5000"
+    privileged: true

@@ -1,0 +1,11 @@
+{
+    "name": "blazinglyfast",
+    "author": "burgerflipper",
+    "description": "'Safe Rust is the true Rust programming language. If all you do is write Safe Rust, you will never have to worry about type-safety or memory-safety. You will never endure a dangling pointer, a use-after-free, or any other kind of Undefined Behavior (a.k.a. UB)' - Rustonomicon \n\n `ncat --ssl blazinglyfast.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{1mpl1ed_b0unds_on_n3st3d_ref3rence5_25860}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        1337
+    ]
+}

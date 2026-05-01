@@ -1,0 +1,84 @@
+# Kernel challenge builder for multifiles.
+FROM --platform=linux/amd64 debian@sha256:4abf773f2a570e6873259c4e3ba16de6c6268fb571fd46ec80be7c67822823b3
+
+ARG LINUX_REPO=https://github.com/gregkh/linux.git
+ARG LINUX_TAG=v6.12.81
+ARG DIST_FLAG=bctf{fake_flag_for_handout}
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        bc \
+        bison \
+        build-essential \
+        busybox-static \
+        ca-certificates \
+        cpio \
+        file \
+        flex \
+        git \
+        kmod \
+        libelf-dev \
+        libssl-dev \
+        python3 \
+        rsync \
+        xz-utils && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+
+RUN git clone --depth 1 --branch ${LINUX_TAG} ${LINUX_REPO} /work/linux-src
+
+COPY ./src/kernel.config.fragment /work/multifiles/deploy/kernel.config.fragment
+COPY ./src/kernel-cache-usercopy.diff /work/multifiles/deploy/kernel-cache-usercopy.diff
+
+RUN set -eux; \
+    git -C /work/linux-src apply /work/multifiles/deploy/kernel-cache-usercopy.diff; \
+    mkdir -p /work/linux-build; \
+    make -C /work/linux-src O=/work/linux-build x86_64_defconfig; \
+    /work/linux-src/scripts/kconfig/merge_config.sh -m -O /work/linux-build \
+        /work/linux-build/.config \
+        /work/multifiles/deploy/kernel.config.fragment; \
+    make -C /work/linux-src O=/work/linux-build olddefconfig; \
+    make -C /work/linux-src O=/work/linux-build -j"$(nproc)" bzImage modules
+
+COPY ./src/ /work/multifiles/src/
+COPY ./src/initrd_init /work/multifiles/deploy/initrd_init
+COPY ./flag.txt /work/multifiles/flag.txt
+
+RUN chmod +x /work/multifiles/deploy/initrd_init
+
+RUN set -eux; \
+    make -C /work/linux-src O=/work/linux-build M=/work/multifiles/src -j"$(nproc)" modules
+
+RUN set -eux; \
+    gcc -static -Os -s /work/multifiles/src/drop_priv.c -o /work/drop_priv; \
+    build_initrd() { \
+        rootfs="$1"; \
+        output="$2"; \
+        flag_value="$3"; \
+        rm -rf "${rootfs}"; \
+        mkdir -p "${rootfs}/bin" "${rootfs}/dev" "${rootfs}/etc" "${rootfs}/home/ctf" "${rootfs}/proc" "${rootfs}/sys" "${rootfs}/tmp"; \
+        install -d -m 0700 "${rootfs}/root"; \
+        install -m 0755 /bin/busybox "${rootfs}/bin/busybox"; \
+        install -m 0755 /work/drop_priv "${rootfs}/bin/drop_priv"; \
+        for app in sh mount insmod chmod chown echo cat dmesg ls mkdir rm cp mv uname sleep id pwd base64; do \
+            ln -sf busybox "${rootfs}/bin/${app}"; \
+        done; \
+        install -m 0755 /work/multifiles/deploy/initrd_init "${rootfs}/init"; \
+        install -m 0644 /work/multifiles/src/multifiles.ko "${rootfs}/multifiles.ko"; \
+        printf '%s\n' "${flag_value}" > "${rootfs}/root/flag.txt"; \
+        chmod 0400 "${rootfs}/root/flag.txt"; \
+        chown root:root "${rootfs}/root" "${rootfs}/root/flag.txt"; \
+        cd "${rootfs}"; \
+        find . -print0 | sort -z | cpio --null --quiet -o -H newc | gzip -9 > "${output}"; \
+    }; \
+    build_initrd /work/initrd-root /work/initrd.cpio.gz "$(cat /work/multifiles/flag.txt)"; \
+    build_initrd /work/initrd-dist-root /work/initrd_dist.cpio.gz "${DIST_FLAG}"
+
+CMD set -eux; \
+    cp /work/linux-build/arch/x86/boot/bzImage /build_out/bzImage; \
+    cp /work/initrd.cpio.gz /build_out/initrd.cpio.gz; \
+    cp /work/initrd_dist.cpio.gz /build_out/initrd_dist.cpio.gz; \
+    cp /work/multifiles/src/multifiles.ko /build_out/multifiles.ko; \
+    cp /work/linux-build/.config /build_out/kernel.config; \
+    cp /work/linux-build/System.map /build_out/System.map

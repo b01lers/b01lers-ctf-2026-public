@@ -1,0 +1,11 @@
+{
+    "name": "spelling-bee",
+    "author": "ninebitcomputer",
+    "description": "forth pwn \n\n `ncat --ssl spelling-bee.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{1_h473_f0r63771n6_w0rd5_j5475v25fwpck}",
+    "difficulty": "medium",
+    "can_be_auto_deployed": true,
+    "ports": [
+        12345
+    ]
+}

@@ -1,0 +1,14 @@
+name: cgi
+services:
+    chall:
+        container_name: cgi
+        build: ../src
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "50k"
+                max-file: "3"
+        expose:
+            - "1337"
+        ports:
+            - "1337:80"

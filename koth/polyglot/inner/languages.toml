@@ -1,0 +1,194 @@
+[bash]
+[bash.runner]
+cmd = ["/bin/bash", "--restricted", "/tmp/script"]
+bins = ["/bin/bash"]
+timeout = 10
+
+[c]
+[c.runner]
+cmd = ["/usr/bin/tcc", "-run", "/tmp/script"]
+bins = ["/usr/bin/tcc"]
+dirs = ["/usr/include", "/usr/lib/tcc"]
+timeout = 10
+
+[elixir]
+[elixir.compile]
+cmd = ["/bin/sh", "-c", "{ printf 'defmodule Main do\\ndef main do\\n'; cat /tmp/script; printf '\\nend\\nend\\n'; } > /tmp/main.ex && /usr/bin/erl -pa /usr/lib/elixir/lib/elixir/ebin -noshell -s elixir start_cli -extra +elixirc -o /out /tmp/main.ex"]
+bins = ["/bin/sh", "/bin/cat", "/usr/bin/erl", "/usr/bin/dirname", "/usr/bin/basename"]
+dirs = ["/usr/lib/erlang", "/usr/lib/elixir"]
+env = ["PATH=/usr/bin:/bin", "HOME=/tmp", "LANG=C.UTF-8"]
+timeout = 30
+binary_name = "Elixir.Main.beam"
+
+[elixir.runner]
+cmd = ["/usr/bin/erl", "-pa", "/usr/lib/elixir/lib/elixir/ebin", "-pa", "/tmp", "-noshell", "-s", "elixir", "start_cli", "-extra", "-e", "Main.main()"]
+bins = ["/bin/sh", "/usr/bin/erl", "/usr/bin/dirname", "/usr/bin/basename", "/etc/hosts"]
+dirs = ["/usr/lib/erlang", "/usr/lib/elixir"]
+env = ["PATH=/usr/bin:/bin", "HOME=/tmp", "LANG=C.UTF-8"]
+timeout = 10
+needs_proc = true
+binary_name = "Elixir.Main.beam"
+
+[erlang]
+[erlang.compile]
+cmd = ["/bin/sh", "-c", "printf '-module(main).\\n-export([main/1]).\\n' > /tmp/main.erl && cat /tmp/script >> /tmp/main.erl && erlc -o /out /tmp/main.erl"]
+bins = ["/bin/sh", "/bin/cat", "/usr/bin/erlc", "/usr/bin/erl", "/usr/bin/dirname", "/usr/bin/basename"]
+dirs = ["/usr/lib/erlang"]
+env = ["PATH=/usr/bin:/bin"]
+timeout = 30
+binary_name = "main.beam"
+
+[erlang.runner]
+cmd = ["/usr/bin/escript", "/tmp/main.beam"]
+bins = ["/bin/sh", "/usr/bin/escript", "/usr/bin/erl", "/usr/bin/dirname", "/usr/bin/basename", "/etc/hosts"]
+dirs = ["/usr/lib/erlang"]
+env = ["PATH=/usr/bin:/bin"]
+timeout = 10
+needs_proc = true
+binary_name = "main.beam"
+
+[fish]
+[fish.runner]
+cmd = ["/bin/sh", "-c", "read a; read b; read c; /usr/local/bin/starfish -i \"$a $b $c\" /tmp/script 2>&1"]
+bins = ["/bin/sh", "/usr/local/bin/starfish"]
+timeout = 10
+
+[golfscript]
+[golfscript.runner]
+cmd = ["/usr/bin/ruby", "/usr/local/bin/golfscript.rb", "/tmp/script"]
+bins = ["/usr/bin/ruby", "/usr/local/bin/golfscript.rb"]
+dirs = ["/usr/lib/ruby"]
+timeout = 10
+
+[haskell]
+[haskell.compile]
+cmd = ["/usr/bin/ghc", "-O0", "-no-keep-hi-files", "-no-keep-o-files", "-o", "/out/prog", "/tmp/script.hs"]
+bins = ["/bin/sh", "/usr/bin/ghc", "/usr/bin/cc", "/usr/bin/as", "/usr/bin/ld", "/usr/bin/ar"]
+dirs = ["/usr/lib/ghc-9.10.3", "/usr/include", "/usr/libexec/gcc", "/usr/lib/gcc", "/usr/x86_64-alpine-linux-musl"]
+env = ["PATH=/usr/bin:/bin", "LD_LIBRARY_PATH=/usr/lib/ghc-9.10.3/lib/x86_64-linux-ghc-9.10.3-inplace"]
+filename = "script.hs"
+timeout = 30
+
+[haskell.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+needs_proc = true
+
+[j]
+[j.runner]
+cmd = ["/opt/j9.6/bin/jconsole", "/tmp/script"]
+bins = ["/bin/sh"]
+dirs = ["/opt/j9.6", "/lib64"]
+env = ["LD_LIBRARY_PATH=/opt/j9.6/bin"]
+timeout = 10
+needs_proc = true
+
+[java]
+[java.compile]
+cmd = ["/usr/bin/javac", "-d", "/out", "/tmp/Main.java"]
+bins = ["/usr/bin/javac"]
+dirs = ["/usr/lib/jvm"]
+env = ["PATH=/usr/bin:/bin", "JAVA_HOME=/usr/lib/jvm/java-25-openjdk", "LD_LIBRARY_PATH=/usr/lib/jvm/java-25-openjdk/lib:/usr/lib/jvm/java-25-openjdk/lib/server"]
+filename = "Main.java"
+timeout = 30
+binary_name = "Main.class"
+
+[java.runner]
+cmd = ["/usr/bin/java", "-cp", "/tmp", "Main"]
+bins = ["/usr/bin/java"]
+dirs = ["/usr/lib/jvm"]
+env = ["PATH=/usr/bin:/bin", "JAVA_HOME=/usr/lib/jvm/java-25-openjdk", "LD_LIBRARY_PATH=/usr/lib/jvm/java-25-openjdk/lib:/usr/lib/jvm/java-25-openjdk/lib/server"]
+timeout = 10
+binary_name = "Main.class"
+
+[julia]
+[julia.runner]
+cmd = ["/usr/local/julia/bin/julia", "--compile=min", "--startup-file=no", "/tmp/script"]
+bins = ["/usr/local/julia/bin/julia"]
+dirs = ["/usr/local/julia/lib", "/usr/local/julia/share"]
+env = ["LD_LIBRARY_PATH=/usr/local/julia/lib:/usr/local/julia/lib/julia", "JULIA_DEPOT_PATH=/tmp/julia_depot", "HOME=/tmp"]
+timeout = 20
+needs_proc = true
+
+[lua]
+[lua.runner]
+cmd = ["/usr/bin/lua5.4", "/tmp/script"]
+bins = ["/usr/bin/lua5.4"]
+timeout = 10
+
+[odin]
+[odin.compile]
+cmd = ["/usr/bin/odin", "build", "/tmp/main.odin", "-file", "-out:/out/prog"]
+bins = ["/bin/sh", "/usr/bin/odin", "/usr/bin/clang", "/usr/bin/ld"]
+dirs = ["/usr/lib/odin", "/usr/include", "/usr/libexec/gcc", "/usr/lib/gcc", "/usr/lib/clang"]
+env = ["PATH=/usr/bin:/bin", "ODIN_ROOT=/usr/lib/odin/"]
+filename = "main.odin"
+timeout = 30
+
+[odin.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+needs_proc = true
+
+[perl]
+[perl.runner]
+cmd = ["/usr/bin/perl", "/tmp/script"]
+bins = ["/usr/bin/perl"]
+dirs = ["/usr/lib/perl5", "/usr/share/perl5"]
+timeout = 10
+
+[python0]
+[python0.runner]
+cmd = ["/usr/local/bin/python0", "/tmp/script"]
+bins = ["/usr/local/bin/python0"]
+dirs = ["/usr/local/lib/python0"]
+timeout = 10
+i386 = true
+
+[scheme]
+[scheme.runner]
+cmd = ["/usr/bin/guile", "--no-auto-compile", "/tmp/script"]
+bins = ["/usr/bin/guile"]
+dirs = ["/usr/lib/guile", "/usr/share/guile"]
+timeout = 10
+
+[rust]
+[rust.compile]
+cmd = ["/bin/sh", "-c", "rustc -C linker=/usr/bin/cc /tmp/script -o /out/prog"]
+bins = ["/bin/sh", "/usr/bin/rustc", "/usr/bin/cc", "/usr/bin/ld", "/usr/bin/as", "/usr/bin/ar"]
+dirs = ["/usr/lib/rustlib", "/usr/lib/gcc", "/usr/libexec/gcc", "/usr/x86_64-alpine-linux-musl"]
+env = ["PATH=/usr/bin:/bin"]
+timeout = 30
+
+[rust.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+needs_proc = true
+
+[typescript]
+[typescript.runner]
+cmd = ["/usr/local/bin/bun", "run", "/tmp/script.ts"]
+bins = ["/usr/local/bin/bun"]
+filename = "script.ts"
+timeout = 30
+
+[whitespace]
+[whitespace.runner]
+cmd = ["/usr/local/bin/whitespace", "t", "/tmp/script"]
+bins = ["/usr/local/bin/whitespace"]
+timeout = 10
+
+[zig]
+[zig.compile]
+cmd = ["/usr/bin/zig", "build-exe", "/tmp/script.zig", "--cache-dir", "/tmp/zig-cache", "--global-cache-dir", "/tmp/zig-global-cache", "-femit-bin=/out/prog"]
+bins = ["/usr/bin/zig"]
+dirs = ["/usr/lib/zig", "/usr/lib/llvm20/lib"]
+env = ["PATH=/usr/bin:/bin", "HOME=/tmp"]
+filename = "script.zig"
+timeout = 30
+needs_proc = true
+
+[zig.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+needs_proc = true

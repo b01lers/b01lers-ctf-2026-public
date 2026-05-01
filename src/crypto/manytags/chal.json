@@ -1,0 +1,11 @@
+{
+    "name": "manytags",
+    "author": "bronson113",
+    "description": "I'm leaking too many tags... \n\n `ncat --ssl manytags.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{too_fragil}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "ports": [
+        34567
+    ]
+}

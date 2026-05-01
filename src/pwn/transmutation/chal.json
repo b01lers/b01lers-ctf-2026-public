@@ -1,0 +1,12 @@
+{
+    "name": "transmutation",
+    "author": "spacemonkeyy",
+    "description": "To turn one program into another... is it even possible? \n\n `ncat --ssl transmutation.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{CPU_0pt1m1z3r5_H4T3_th15_0n3_51mp13_tr1ck_5519225335}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "tags": ["beginner"],
+    "ports": [
+        1337
+    ]
+}

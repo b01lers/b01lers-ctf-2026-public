@@ -1,0 +1,10 @@
+{
+    "name": "koth",
+    "author": "b01lers",
+    "description": "Access the king-of-the-hill dashboard here: [koth.b01lersc.tf](https://koth.b01lersc.tf)\n\nYour score for each challenge depends on how well you do relative to others. You will gain points proportional to `1000 / sqrt(x)` where x is your rank for that challenge. Your score for all king-of-the-hill challenges will be summed with your score for jeopardy challenges when calculating the final CTFtime leaderboard.\n\nThe top 3 overall highest-scoring teams in king-of-the-hill will receive:\n- 1st: $300 USD\n- 2nd: $150 USD\n- 3rd: $50 USD",
+    "flag": "acc5ed83d9b93482d938fbb31a20189dff6d0761449a738ad3ab3389d55c5f13",
+    "difficulty": "easy",
+    "minPoints": 1,
+    "maxPoints": 1,
+    "can_be_auto_deployed": false
+}

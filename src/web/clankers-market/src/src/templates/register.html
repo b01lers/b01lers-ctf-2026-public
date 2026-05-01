@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register | Clankers Market</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+<body>
+  <main class="shell">
+    <section class="card">
+      <h1>Create Account</h1>
+      <p class="tagline">No database, no excuses. In-memory and dangerous.</p>
+
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <form method="post" class="stack">
+        <label>
+          Username
+          <input type="text" name="username" required />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" required />
+        </label>
+        <button class="btn" type="submit">Register</button>
+      </form>
+
+      <p class="subtle">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,5 @@
+a = String.trim(IO.read(:stdio, :line)) |> String.to_integer()
+b = String.trim(IO.read(:stdio, :line)) |> String.to_integer()
+c = String.trim(IO.read(:stdio, :line)) |> String.to_integer()
+r = Enum.reduce(1..b, 1, fn _, r -> rem(r * a, c) end)
+IO.puts(r)

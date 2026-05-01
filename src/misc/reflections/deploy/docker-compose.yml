@@ -1,0 +1,12 @@
+services:
+  calc1-chall:
+    build: ../src
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    security_opt:
+      - seccomp=unconfined
+      - apparmor=unconfined
+    tmpfs:
+      - /tmp
+    privileged: true

@@ -1,0 +1,484 @@
+Quantum Information and Computation, Vol. 9, No. 9&10 (2009) 0765–0772
+c Rinton Press
+°
+
+SECURITY OF QUANTUM SECRET SHARING WITH TWO-PARTICLE
+ENTANGLEMENT AGAINST INDIVIDUAL ATTACKS
+
+SU-JUAN QINa
+FEI GAO
+QIAO-YAN WEN
+State Key Laboratory of Networking and Switching Technology
+Beijing University of Posts and Telecommunications, Beijing, 100876, China
+FU-CHEN ZHU
+National Laboratory for Modern Communications, P.O.Box 810
+Chengdu, 610041, China
+
+Received May 23, 2008
+Revised April 20, 2009
+Security is the most important criterion to evaluate cryptography protocols. We investigate the security of one important quantum secret sharing protocol [Phys. Rev. A
+59, 162 (1999)] (KKI protocol). By discriminating two mixed states, we derive the optimal relationship between the induced error rate (QBER) and the maximal amount of
+information gained by a dishonest participant. For a specific amount of eavesdropper’s
+knowledge on the shared secret that we consider, the disturbance on the quantum state
+in terms of QBER is actually larger for the hybrid protocol than the KKI protocol.
+Therefore, the hybrid protocol appears to be better able to detect eavesdroppers than
+the KKI protocol. For this reason, we do not see any reason to employ the KKI protocol
+against individual attacks.
+Keywords: quantum secret sharing, quantum cryptography, individual attack, security
+Communicated by: H-K Lo & H Zbinden
+
+Quantum cryptography, as first suggested by Bennett and Brassard (BB84) [1], is the most
+advanced development of quantum information processing. Secret sharing is a well-studied
+field of cryptography which allows a secret to be shared among many participants in such a
+way that only the authorized groups can reconstruct it. Some interesting publications have
+generalized secret sharing into quantum scenario. Up to now, there are two different types
+of quantum secret sharing (QSS). The first type is the sharing of quantum secrets, as first
+proposed by Cleve et al. [2]. The second type is the quantum sharing of classical secrets,
+as first studied by Hillery et al. [3]. Since the above pioneering works appeared, QSS has
+attracted a great deal of attention [4, 5, 6]. Here we focus our attention on the latter (hereafter
+“QSS” denotes specially the quantum sharing of classical secrets).
+Karlsson et al. [6] proposed a novel quantum protocol to share classical keys in 1999 (in
+the following called KKI). It could lead to interesting experiments from a physics point of
+view. But, in our opinion, it is not serious secret-sharing from a cryptography perspective.
+aqsujuan2003@163.com
+
+765
+
+766
+
+Security of quantum secret sharing with two-particle entanglement against individual attacks
+
+In fact, it combined the quantum key distribution (QKD) and secret-sharing to transmit the
+shares securely in the presence of eavesdroppers. The original intention of KKI is that it is
+more efficient than the hybrid scheme, i.e. QKD followed by classical secret sharing [7, 8].
+However, As we know, security is the most important requirement for a cryptographical
+protocol. Consequently we wondered, from the aspect of security, which way to achieve this
+task is better.
+In this paper, we analyze the security of KKI [6] by a general individual eavesdropping
+strategy. To evaluate the security extent, we derive the optimal trade-off between the information gain and the error rate introduced by an eavesdropper. Furthermore, comparing with
+the hybrid scheme, we find that the information gained by an eavesdropper is larger for a
+specific error rate in KKI protocol. Therefore, the hybrid scheme is a securer way than KKI
+to achieve secret sharing against individual attacks.
+We first introduce the process of KKI protocol. Similar with the BB84 protocol [1], the
+dealer Trent encodes his information with two nonorthogonal sets {|ψ + i, |φ− i} and√{|Ψ+ i, |Φ− i}
++
+−
++
+−
++
+−
+randomly, where
+√ |ψ i, |φ i are two Bell states, and |Ψ i = (|φ i + |ψ i)/ 2, |Φ i =
+−
++
+(|φ i − |ψ i)/ 2. Then he sends the two qubits to his two agents Alice and Bob respectively,
+who perform measurements in z or x basis at random. After classical communication via
+public channel, Alice and Bob discard the results when their measurement bases are inconsistent. In this way, Alice and Bob can read out Trent’s secret key jointly according to their
+remaining results.
+Now let us derive the eavesdropping strategy which is optimal with respect to relationship
+between the information gain and the induced error rate for a eavesdropper. We do not
+consider collective or coherent attacks, but only the individual attack. As pointed out in
+Refs. [6, 9, 10, 11], a dishonest participant generally has more advantages to attack than an
+outside eavesdropper. If a QSS protocol is secure for the dishonest participants, it is secure
+for any eavesdropper. Therefore we concentrate our attention on the participant attacks,
+and without loss of generality, we assume that the dishonest participant is Bob, who has
+unlimited ability of computation and can take any eavesdropping operation allowed by the
+laws of quantum mechanics. To obtain Trent’s secret by himself, Bob can perform a general
+individual attack as described in Ref. [13, 14, 15, 16, 17]. When two qubits are sent out by
+Trent, Bob lets a probe, initially in some standard state |χi, interact unitarily with them.
+After the interaction, Bob sends one qubit to Alice, stores another qubit and his probe to
+glean Trent’s information later. The most general unitary transformation Bob can design is
+of the form
+U |φ− i|χi = |z + i|ε00 i + |z − i|ε01 i,
++
+
++
+
+(1)
+
+−
+
+U |ψ i|χi = |z i|ε10 i + |z i|ε11 i.
+Here |z + i = |0i, |z − i = |1i. The first qubit is the one of Alice, and others are held by Bob.
+|εij i, i, j ∈ {0, 1} refer to the states at Bob’s site after the interaction, which are in general
+neither normalized nor orthogonal. Unitarity of the operation U implies:
+hε00 |ε10 i + hε01 |ε11 i = 0,
+hε00 |ε00 i + hε01 |ε01 i = 1,
+hε10 |ε10 i + hε11 |ε11 i = 1.
+
+(2)
+
+S.-J. Qin, F. Gao, Q.-Y. Wen, and F.-C. Zhu
+
+767
+
+Similar to Refs. [14, 15, 16, 17], Bob is wise enough to treat all four states in the same way,
+that is, Bob’s eavesdropping has to be done carefully so that the honest participant (Alice)
+gets each outcome in equal probability for every initial state; otherwise Trent and Alice
+could find out eavesdropper’s existence with refined data analysis (i.e., Trent compares the
+probabilities Alice gets each outcome according to different initial states). For example, for the
+initial state U |φ− i|χi = |z + i|ε00 i + |z − i|ε01 i = √12 |x+ i(|ε00 i + |ε01 i) + √12 |x− i(|ε00 i − |ε01 i),
+(|x+ i = √12 (|0i + |1i), |x− i = √12 (|0i − |1i)) no matter which basis Alice chooses to measure
+her qubit, the probability for getting each measurement outcome must be equal, that is
+1
+,
+2
+(hε00 | + ε01 |)(|ε00 i + |ε01 i) = 1,
+
+hε00 |ε00 i = hε01 |ε01 i =
+
+(3)
+
+(hε00 | − ε01 |)(|ε00 i − |ε01 i) = 1.
+Similarly, let the probability of each outcome for other three initial states be equal, we get
+some constrains:
+1
+,
+2
+hε00 |ε11 i + hε01 |ε10 i + hε10 |ε01 i + hε11 |ε00 i = 0,
+
+hε00 |ε00 i = hε01 |ε01 i = hε10 |ε10 i = hε11 |ε11 i =
+hε00 |ε01 i + hε01 |ε00 i = 0,
+
+(4)
+
+hε00 |ε10 i + hε10 |ε00 i = 0,
+hε10 |ε11 i + hε11 |ε10 i = 0,
+hε01 |ε11 i + hε11 |ε10 i = 0.
+For the same reason as described in Ref. [15], we assume all the inner products are real.
+Therefore, the constrains can be reduced to
+1
+,
+2
+hε00 |ε01 i = hε00 |ε10 i = hε10 |ε11 i = hε01 |ε11 i = 0,
+
+hε00 |ε00 i = hε01 |ε01 i = hε10 |ε10 i = hε11 |ε11 i =
+
+(5)
+
+hε00 |ε11 i + hε01 |ε10 i = 0.
+It is from the states |εij i and their linear combinations that Bob will glean information. Note
+that, irrespective of the choice of U , there can be no more than four linearly independent
+vectors |εij i. That is to say, the four vectors |εij i span, at most, a four-dimensional space.
+Without loss of generality, we can choose basis vectors |em i, m ∈ {0, 1, 2, 3} to represent |εij i
+as
+1
+|ε00 i = √ |e0 i,
+2
+1
+|ε01 i = √ |e1 i,
+2
+1
+|ε10 i = √ (a|e1 i + b|e2 i + c|e3 i),
+2
+1
+|ε11 i = √ (−a|e0 i + c|e2 i − b|e3 i).
+2
+
+(6)
+
+768
+
+Security of quantum secret sharing with two-particle entanglement against individual attacks
+
+where a, b, c are real and a2 + b2 + c2 = 1.
+Similar to the optimal eavesdropping of BB84 protocol [14], in order to take advantage
+of the delayed public information, Bob’s optimal strategy is measuring his qubits after Trent
+and Alice reveal their classical information. However, according to the KKI protocol, in
+the process of eavesdropping detection, Bob and Alice must first announce his measurement
+outcomes for test qubits and then the measurement bases (MBs) for both test qubits and
+information qubits. Therefore, in this condition, the most favorable manipulations for Bob
+are as follows: (i) for the test qubits, Bob must announce his outcomes before Alice and
+Trent’s announcement, thereby no “delayed information” can be used in his measurements.
+To reduce the probability of being detected, Bob has to perform certain measurements and
+give an advantageous announcement according to his measurement outcomes (Note that the
+measurements are not restricted in “z” or “x” bases as required in the KKI protocol. We will
+explain them below.); (ii) for the information qubits, to make use of the delayed information
+of Alice’s MBs and Trent’s sets, Bob announces a random sequence of z and x to forge his
+MBs (i.e., these MBs are fictitious, and actually he has not measured any of them and even
+not decided how to measure each information qubit).
+Here we explain Bob’s operation on the test qubits in detail. It is easy to see that Bob’s
+eavesdropping may disturb the state of test qubits. To reduce the probability being detected,
+Bob chooses two optimal measurements Z 0 and X 0 randomly on the test qubits substituting
+for z and x respectively, which introduce the minimum error rate in each case. We care about
+the minimum error rate introduced by Bob instead of the measurement operations. In fact,
+for two states to discriminate, the minimum error rate is determinate, which only depends
+on the two states discriminated, and is irrelevant to the measurement. Here, we assume Z 0
+and X 0 are the optimal measurements where introducing minimum error rates in two cases,
+respectively. Now we explore the minimum error rate inflicted on the test qubits by Bob in
+each case.
+First consider the case that Bob performs Z 0 measurement, which can help Bob to give
+a correct announcement with maximal probability. He first announces his outcome 0 or 1
+(correspond to |z + i or |z − i) and then his MB “z”. If their results can be used to detect
+eavesdropping, Bob’s, Alice’s MBs and Trent’s states must satisfy the correlation pointed out
+in Ref. [6]. That is when the initial state sent by Trent is |φ− i or |ψ + i, Alice’s MB must be z,
+on the contrary if Trent’s state is |Φ− i or |Ψ+ i, Alice’s MB is x; otherwise their results have
+no determinate relation and will be discarded. Therefore Bob knows the possible states at his
+site when he declares z basis. For example, if the initial state is U |φ− i|χi = |0i|ε00 i + |1i|ε01 i
+(Alice’s MB is z), Bob’s state may be |ε00 i or |ε01 i which should correspond to two outcomes
+|z + i and |z − i respectively when no error occurs. As the initial states sent by Trent is one of
+the four states with equal probability, the states at Bob’s site may be one of the following
+eight states with equal probability.
+|ϕ1 i = |e0 i,
+|ϕ2 i = −a|e0 i + c|e2 i − b|e3 i,
+1
+|ϕ3 i = [(1 − a)|e0 i − (1 + a)|e1 i − (b − c)|e2 i − (c + b)|e3 i],
+2
+1
+|ϕ4 i = [(1 − a)|e0 i + (1 + a)|e1 i + (b + c)|e2 i + (c − b)|e3 i],
+2
+
+S.-J. Qin, F. Gao, Q.-Y. Wen, and F.-C. Zhu
+
+|ϕ5 i = |e1 i,
+
+769
+
+(7)
+
+|ϕ6 i = a|e1 i + b|e2 i + c|e3 i,
+1
+|ϕ7 i = [(1 + a)|e0 i + (1 − a)|e1 i − (b + c)|e2 i − (c − b)|e3 i],
+2
+1
+|ϕ8 i = [(1 + a)|e0 i − (1 − a)|e1 i + (b − c)|e2 i + (c + b)|e3 i].
+2
+The first four states imply that Bob should declare |z + i, and the other four states imply |z − i.
+Therefore to judge which announcement (|z + i or |z − i) to be given, Bob should distinguish
+the two mixed states ρz+ , ρz− which occur with equal probability,
+1
+[|ϕ1 ihϕ1 | + |ϕ2 ihϕ2 | + |ϕ3 ihϕ3 | + |ϕ4 ihϕ4 |],
+(8)
+4
+1
+ρz− = [|ϕ5 ihϕ5 | + |ϕ6 ihϕ6 | + |ϕ7 ihϕ7 | + |ϕ8 ihϕ8 |].
+(9)
+4
+According to the well-known result [12], to discriminate two mixed states ρ0 and ρ1 occurring
+with a priori probabilities p0 and √
+p1 , the minimum-error probability attainable is PE =
+1
+1
+−
+kp
+ρ
+−
+p
+ρ
+k,
+where
+kΛk
+=
+tr
+Λ† Λ. After fussy calculating, we get the minimum error
+0
+0
+1
+1
+2
+2
+a
+1
+rate 4 + 4 for Bob distinguishing his outcomes |z + i and |z − i.
+For the case that Bob performs X 0 measurement, using the same method, we get the
+minimum error probability Bob distinguish his outcomes |x+ i and |x− i which is same as
+that in distinguishing |z + i and |z − i. Therefore the average error rate introduced by Bob’s
+operations for all possible states is
+1 a
+D= + .
+(10)
+4 4
+Note that −1 ≤ a ≤ 1, and thus 0 ≤ D ≤ 12 .
+We now consider the information qubits, and derive the maximum mutual information I T B
+(Shannon information) between Trent and Bob. As mentioned above, when Trent requires
+Bob to publish his MBs for information qubits, Bob declares a sequence of fictitious MBs,
+actually he has not measure any qubit at that time. However Bob can know Alice’s MBs
+and Trent’s sets from their public information, according to which he decides how to measure
+his information qubit. Now we calculate the maximal information Bob can obtain from his
+measurements each case.
+First consider the case that Trent revealed his set was {|ψ + i, |φ− i}, and Alice measured
+her qubit in z basis, Bob’s states may be one of the four states with equal probability:
+ρz + =
+
+|ω1 i = |e0 i,
+|ω2 i = |e1 i,
+
+(11)
+
+|ω3 i = a|e1 i + b|e2 i + c|e3 i,
+|ω4 i = −a|e0 i + c|e2 i − b|e3 i.
+The first two states are from the initial states |φ− i, and others are from |ψ + i. To deduce the
+initial state |φ− i or |ψ + i (correspond to secret bit 0 or 1), Bob must perform a measurement to
+discriminate two mixed states ρφ− = 12 (|ω1 ihω1 | + |ω2 ihω2 |) and ρψ+ = 12 (|ω3 ihω3 | + |ω4 ihω4 |).
+Then the minimal error rate to deduce Trent’s secret is
+1 1p
+1 − a2
+(12)
+Qmin = −
+2 2
+
+770
+
+Security of quantum secret sharing with two-particle entanglement against individual attacks
+
+1
+
+Information
+
+0.8
+
+0.6
+
+0.4
+
+0.2
+
+0
+0
+
+0.05
+
+0.1
+0.15
+Error Rate
+
+0.2
+
+0.25
+
+Fig. 1. The eavesdropper’s information I as functions of error rate D. The lower curve holds for
+the hybrid scheme and is shown for the purpose of comparison.
+
+The mutual information between Trent and Bob is given by
+I T B = 1 + Q log Q + (1 − Q) log(1 − Q),
+
+(13)
+
+where Q is the error rate to discriminate Trent’s secret in each case.
+For the other three cases, we get the same result as Eq. (12). Therefore the maximal
+average information Bob can gain is
+√
+√
+√
+√
+1 − 1 − a2
+1 − 1 − a2
+1 + 1 − a2
+1 + 1 − a2
+IT B = 1 +
+log
++
+log
+.
+(14)
+2
+2
+2
+2
+The relationship I(D) between the information gain and the induced error rate implied by
+Eqs.(10) and (14) is plotted in Fig.1, where we also give the corresponding relationship of the
+hybrid scheme, for the purpose of comparison. The hybrid scheme is another approach (QKD
+followed by conventional techniques) to achieve the same object as that of KKI. The solution
+of the hybrid scheme is as follows: the dealer Trent first establishes two random keys K1 , K2
+using BB84 protocol, where K1 for Alice, and K2 for Bob. Then the secret key of Trent, is
+K = K1 +K2 . When Trent wants to send secret message M , he can encrypt it with his random
+key K. In this way, Alice and Bob can decrypt Trent’s secret only when they cooperate. If
+a dishonest participant, Bob, wants to filch Trent’s secret, the only way is eavesdropping the
+key K1 between Trent and Alice. His eavesdropping will induce disturbance inevitably, and
+the optimal trade-off [14] between information and error rate is indicated by the dashed line
+in Fig.1. Note that our curve lies everywhere up the one for the hybrid scheme, that is, the
+eavesdropper gains more information for the same error rate as that of the hybrid scheme. In
+
+S.-J. Qin, F. Gao, Q.-Y. Wen, and F.-C. Zhu
+
+771
+
+other words, the eavesdropper will introduce less noise in order to gain the same information
+as that of the hybrid scheme. For example, when Bob gains all the information of Trent
+(I = 1), he will introduce 21 error rate in the hybrid scheme, but 41 in the KKI protocol which
+is much easier to be concealed by channel noise. Therefore, the hybrid protocol is better able
+to detect eavesdroppers than the KKI protocol. For this reason, we do not see any reason to
+employ the KKI protocol against individual attacks.
+One may argue that the comparison is unfair, as the disturbances in the hybrid scheme
+and KKI are computed in different ways. Here we emphasize that, the two ways to measure
+the disturbance are consistent. Both of them take the measure criterion in Ref. [13], that
+is, the disturbance is the probability that a discrepancy would be detected by participants
+(or error rate). In the former, the measurements to find discrepancy are determinate. That
+is, when the input state is |z + i or |z − i (|x+ i or |x− i), the measurement basis is z (x).
+Therefore, the error rate can be represented as a function of fidelity between input state
+and output state. The reason without discussing the optimal measurement for Eve is that
+Eve’s measurement can not change the discrepancy rate detectable as she does not participate
+in the process of checking eavesdropping. While in the latter, the eavesdropper, Bob, is a
+participant in the process of eavesdropping detection. As the discrepancy detectable are the
+inconsistent outcomes among three parties, Bob can reduce the inconsistent outcomes by
+performing optimal measurements and telling a lie. Therefore, the discrepancy rate can not
+represented by fidelity between input state and output state directly. Here we compute the
+minimum discrepancy rate using minimum error discrimination. Note that the minimum error
+rate for discriminating two states only depends on the two input states. Anyway, both two
+analyses compute the minimum discrepancy rate induced by an eavesdropper, and therefore
+the comparison is fair.
+It should be pointed out that our analysis is more complex than that in Ref. [14], as the
+eavesdropper in KKI is a participant who can reduce the error rate by optimal measurements.
+Just because of eavesdropper’s participation in process of eavesdropping detection, the security
+of KKI is weaker against individual attacks than the hybrid scheme. In our opinion, the
+security extent of QSS protocols will not exceed that of the corresponding hybrid scheme,
+which is indeed illustrated by our result. Therefore the study on QSS can be transferred into
+the study of QKD and classical secret sharing.
+In conclusion, we have analyzed the security of one prominent quantum secret sharing protocol KKI, and derived the optimal trade-off between the information gain and the error rate
+introduced by a dishonest participant. Comparing the trade-off under the same assumptions,
+we found the eavesdropper obtained more information in KKI than in the hybrid scenario for
+a fixed error rate. Therefore the KKI protocol offers weaker security than the hybrid scheme
+against individual attacks though its efficiency is higher.
+Acknowledgements
+This work is supported by NSFC (Grant Nos. 60873191, 60821001), SRFDP (Grant No.
+200800131016), Beijing Nova Program (Grant No. 2008B51), Key Project of Chinese Ministry
+of Education (Grant No. 109014), Beijing Natural Science Foundation (Grant No. 4072020),
+National Laboratory for Modern Communications Science Foundation of China (Grant No.
+9140C1101010601).
+
+772
+
+Security of quantum secret sharing with two-particle entanglement against individual attacks
+
+References
+1. C. H. Bennett and G. Brassard (1984), Quantum cryptography: public-key distribution and coin
+tossing, Proceedings of the International Conference on Computers, Systems and Signal Processing, Bangalore Press (India), pp. 175-179.
+2. R. Cleve, D. Gottesman and H. K. Lo (1999), How to share a quantum secret, Phys. Rev. Lett.,
+Vol.83, pp. 648-651.
+3. M. Hillery, V. Buzěk and A. Berthiaume (1999), Quantum secret sharing, Phys. Rev. A, Vol.59,
+pp. 1829-1834.
+4. A. Smith (2000), Quantum secret sharing for general access structures, Arxiv preprint quantph/0001087.
+D. Gottesman (2000), Theory of quantum secret sharing, Phys. Rev. A, Vol.61, pp. 042311.
+A. M. Lance, T. Symul, W. P. Bowen, et al. (2004) Tripartite quantum state sharing, Phys. Rev.
+Lett., Vol.92, p. 177903 .
+5. W. Tittel, H. Zbinden, and N. Gisin, Experimental demonstration of quantum secret sharing,
+Phys. Rev. A 63, 042301 (2001).
+G. P. Guo and G. C. Guo (2003), Quantum secret sharing without entanglement, Phys. Lett. A,
+Vol.310, pp. 247-251.
+L. Xiao, G. L. Long, F. G. Deng, et al. (2004), Efficient multiparty quantum-secret-sharing schemes,
+Phys. Rev. A, Vol.69, p. 052307.
+L. Y. Hsu and C. M. Li (2005), Quantum secret sharing using product states, Phys. Rev. A, Vol.71,
+p.022321 .
+6. A. Karlsson, M. Koashi and N. Imoto (1999), Quantum entanglement for secret sharing and secret
+splitting, Phys. Rev. A, Vol.59, pp. 162-168.
+7. A. Shamir (1979), How to share a secret, Communications of the ACM, Vol.22, pp. 612-613.
+8. G. R. Blakley (1979), Safeguarding cryptographic keys, Proceeding of the National Computer
+Conference, American Federation of Information Processing Societies, Vol. 48, pp. 313-317.
+9. F. G. Deng, X. H. Li, H. Y. Zhou, et al (2005), Improving the security of multiparty quantum
+secret sharing against Trojan horse attack, Phys. Rev. A, Vol.72, p. 044302.
+10. S. J. Qin, F. Gao, Q. Y. Wen, et al. (2006), Improving the security of multiparty quantum secret
+sharing against an attack with a fake signal, Phys. Lett. A, Vol.357, pp. 101-103.
+11. F. Gao, S. J. Qin, Q. Y. Wen, et al. (2007), A simple participant attack on the Bradler-Dusek
+protocol, Quantum Information and Computation, Vol.7, pp. 329-334.
+12. C. W. Helstrom (1976), Quantum detection and estimation theory, New York: Academic.
+13. C. A. Fuchs, and A. Peres. (1996), Quantum-state disturbance versus information gain: Uncertainty
+relations for quantum information, Phys. Rev. A, Vol. 53, pp. 2038-2045.
+14. C. A. Fuchs, N. Gisin, R. B. Griffiths, et al. (1997), Optimal eavesdropping in quantum cryptography. I. Information bound and optimal strategy, Phys. Rev. A, Vol.56, pp. 1163-1172.
+15. B. A. Slutsky, R. Rao, P.-C. Sun, et al. (1998), Security of quantum cryptography against individual
+attacks, Phys. Rev. A, Vol.57, pp. 2383-2398.
+16. D. Bruß (1998), Optimal eavesdropping in quantum cryptography with six states, Phys. Rev. Lett.,
+Vol.81, pp. 3018-3021.
+17. D. Bruß and C. Macchiavello (2002), Optimal eavesdropping in cryptography with three-dimensional
+quantum states, Phys. Rev. Lett., Vol.88, p. 127901.
+
+

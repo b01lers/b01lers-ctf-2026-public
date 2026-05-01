@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Listings | Clankers Market</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+<body>
+  <main class="shell wide">
+    <section class="card">
+      <div class="header-row">
+        <div>
+          <h1>Live Listings</h1>
+          <p class="tagline">Operator: {{ username }}</p>
+        </div>
+        <div class="timer-box">
+          Refresh in <span id="refresh-timer">20</span>s
+        </div>
+      </div>
+
+      <div id="listing-grid" class="grid" aria-live="polite"></div>
+
+      <div class="actions">
+        <a class="btn ghost" href="{{ url_for('index') }}">Home</a>
+        <form method="post" action="{{ url_for('logout') }}">
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

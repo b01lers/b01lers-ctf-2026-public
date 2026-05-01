@@ -1,0 +1,88 @@
+diff --git a/include/linux/slab.h b/include/linux/slab.h
+index b35e2db7eb0e..ed99690ce642 100644
+--- a/include/linux/slab.h
++++ b/include/linux/slab.h
+@@ -746,6 +746,38 @@ void *kmem_cache_alloc_lru_noprof(struct kmem_cache *s, struct list_lru *lru,
+ bool kmem_cache_charge(void *objp, gfp_t gfpflags);
+ void kmem_cache_free(struct kmem_cache *s, void *objp);
+ 
++/**
++ * kmem_cache_copy_from_user - Copy from userspace into an object from a cache
++ * @cachep: The cache the destination object must belong to.
++ * @to: Destination address in kernel memory.
++ * @from: Source address in userspace.
++ * @n: Number of bytes to copy.
++ *
++ * This wraps copy_from_user(), but first verifies that @to lives in a slab
++ * belonging to @cachep. The subsequent copy_from_user() call performs the
++ * normal hardened usercopy heap validation for the destination range.
++ *
++ * Return: number of bytes not copied, like copy_from_user().
++ */
++unsigned long kmem_cache_copy_from_user(struct kmem_cache *cachep, void *to,
++					const void __user *from, unsigned long n);
++
++/**
++ * kmem_cache_copy_to_user - Copy from an object in a cache to userspace
++ * @cachep: The cache the source object must belong to.
++ * @to: Destination address in userspace.
++ * @from: Source address in kernel memory.
++ * @n: Number of bytes to copy.
++ *
++ * This wraps copy_to_user(), but first verifies that @from lives in a slab
++ * belonging to @cachep. The subsequent copy_to_user() call performs the
++ * normal hardened usercopy heap validation for the source range.
++ *
++ * Return: number of bytes not copied, like copy_to_user().
++ */
++unsigned long kmem_cache_copy_to_user(struct kmem_cache *cachep, void __user *to,
++				      const void *from, unsigned long n);
++
+ kmem_buckets *kmem_buckets_create(const char *name, slab_flags_t flags,
+ 				  unsigned int useroffset, unsigned int usersize,
+ 				  void (*ctor)(void *));
+diff --git a/mm/slab_common.c b/mm/slab_common.c
+index 477fa471da18..93669b76b157 100644
+--- a/mm/slab_common.c
++++ b/mm/slab_common.c
+@@ -40,6 +40,40 @@ LIST_HEAD(slab_caches);
+ DEFINE_MUTEX(slab_mutex);
+ struct kmem_cache *kmem_cache;
+ 
++static bool kmem_cache_has_object(struct kmem_cache *cachep, const void *ptr)
++{
++	struct slab *slab;
++
++	if (!cachep)
++		return false;
++
++	slab = virt_to_slab(kasan_reset_tag((void *)ptr));
++	if (!slab || slab->slab_cache != cachep)
++		return false;
++
++	return true;
++}
++
++unsigned long kmem_cache_copy_from_user(struct kmem_cache *cachep, void *to,
++					const void __user *from, unsigned long n)
++{
++	if (!kmem_cache_has_object(cachep, to))
++		return n;
++
++	return copy_from_user(to, from, n);
++}
++EXPORT_SYMBOL(kmem_cache_copy_from_user);
++
++unsigned long kmem_cache_copy_to_user(struct kmem_cache *cachep, void __user *to,
++				      const void *from, unsigned long n)
++{
++	if (!kmem_cache_has_object(cachep, from))
++		return n;
++
++	return copy_to_user(to, from, n);
++}
++EXPORT_SYMBOL(kmem_cache_copy_to_user);
++
+ /*
+  * Set of flags that will prevent slab merging
+  */

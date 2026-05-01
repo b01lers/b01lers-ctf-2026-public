@@ -1,0 +1,8 @@
+{
+    "name": "indirect-memory-access",
+    "author": "xborg0",
+    "description": "Did you know the GBA has 4 DMA channels?",
+    "flag": "bctf{aSbaabababaaabbasaaSbsaaaasLaRRbaaDaaaaDbRaabasaRaabsbSabas}",
+    "difficulty": "medium",
+    "can_be_auto_deployed": true
+}

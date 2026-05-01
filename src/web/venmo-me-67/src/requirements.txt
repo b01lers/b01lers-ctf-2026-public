@@ -1,0 +1,7 @@
+Flask
+google-genai
+gunicorn
+Pillow
+pydantic
+python-dotenv
+qrcode

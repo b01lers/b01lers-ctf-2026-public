@@ -1,0 +1,10 @@
+{
+  "name": "job-app-simulator",
+  "author": "hmmm",
+  "description": ":blobcosyandcomfy:\n\n[instancer](https://instancer.b01lersc.tf/challenge/job-app-simulator)",
+  "flag": "bctf{:blobcoldanduncomfy:_286cacab}",
+  "difficulty": "easy",
+  "can_be_auto_deployed": true,
+  "ports": [80],
+  "tags": ["beginner"]
+}

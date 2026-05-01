@@ -1,0 +1,40 @@
+{
+  "name": "gas-giant",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "start": "node dist-server/index.js"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "anser": "^2.3.2",
+    "body-parser": "^2.2.2",
+    "express": "^5.1.0",
+    "prismjs": "^1.30.0",
+    "puppeteer": "^24.39.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-markdown": "^10.1.0",
+    "react-router": "^7.13.1",
+    "react-simple-code-editor": "^0.14.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "tailwindcss": "^4.1.13",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.2",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "globals": "^16.4.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.3.1"
+  }
+}

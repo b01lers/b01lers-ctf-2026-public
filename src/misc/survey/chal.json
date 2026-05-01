@@ -1,0 +1,11 @@
+{
+  "name": "survey",
+  "author": "b01lers",
+  "description": "Please fill out our feedback form: <https://forms.gle/cYmw42BakdHwLCjdA>\n\nThis challenge does not affect tiebreakers, so no need to rush.",
+  "flag": "bctf{hope_you_had_fun_:)_see_you_again_soon!}",
+  "difficulty": "easy",
+  "can_be_auto_deployed": false,
+  "minPoints": 1,
+  "maxPoints": 1,
+  "tiebreakEligible": false
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Job Application</title>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<main>
+			<div id="description">
+				<h1>Software Engineer</h1>
+				<p>
+					<strong>Location:</strong> Flexible — Remote — On-site — depending on team needs
+					— and business priorities — and project requirements
+				</p>
+
+				<h2>About the Role</h2>
+				<p>
+					We are seeking a highly motivated, detail-oriented Software Engineer to join our
+					dynamic and fast-paced team — a team that values ownership — collaboration — and
+					continuous improvement. In this role, you will collaborate with cross-functional
+					stakeholders — including product managers — designers — engineers — and
+					technical leadership — to design — develop — test — deploy — and maintain
+					scalable software systems — that drive impact — and improve user experience —
+					across multiple platforms. You will be working in an environment that encourages
+					curiosity — experimentation — iteration — and accountability — while maintaining
+					a strong focus on delivery — and quality. The ideal candidate is passionate
+					about technology — enjoys solving complex problems — thrives in ambiguity — and
+					actively seeks opportunities to learn — improve — and contribute.
+				</p>
+
+				<h2>Key Responsibilities</h2>
+				<ul>
+					<li>
+						Design — develop — test — deploy — and maintain scalable — reliable — and
+						high-performance software applications — and backend services
+					</li>
+					<li>
+						Collaborate with cross-functional teams — aligning on requirements —
+						priorities — constraints — and execution plans
+					</li>
+					<li>
+						Write clean — maintainable — efficient — and well-documented code —
+						following best practices — engineering standards — and team conventions
+					</li>
+					<li>
+						Participate in code reviews — giving feedback — receiving feedback —
+						iterating on solutions — and improving overall code quality
+					</li>
+					<li>
+						Troubleshoot — debug — and optimize systems — improving performance —
+						scalability — reliability — and long-term maintainability
+					</li>
+					<li>
+						Contribute to system design discussions — architectural decisions — and
+						long-term technical strategy — and roadmap planning
+					</li>
+					<li>
+						Maintain documentation — ensuring clarity — consistency — accessibility —
+						and usability across teams
+					</li>
+					<li>
+						Stay current with emerging technologies — frameworks — tools — libraries —
+						and industry trends — continuously evolving technical expertise
+					</li>
+				</ul>
+
+				<h2>Qualifications</h2>
+				<ul>
+					<li>
+						Bachelor’s degree in Computer Science — Engineering — or related field — or
+						equivalent practical experience — in industry — open source — or personal
+						projects
+					</li>
+					<li>
+						Proficiency in one or more programming languages — such as Python — Java —
+						JavaScript — C++ — or similar modern languages
+					</li>
+					<li>
+						Experience with software development practices — including version control —
+						testing — debugging — and deployment workflows
+					</li>
+					<li>
+						Familiarity with Git — branching — merging — pull requests — and
+						collaborative development workflows
+					</li>
+					<li>
+						Understanding of SDLC — Agile methodologies — iterative development — and
+						modern engineering practices
+					</li>
+					<li>
+						Strong problem-solving skills — analytical thinking — and attention to
+						detail — in complex systems and environments
+					</li>
+					<li>
+						Strong communication skills — collaboration skills — and the ability to work
+						effectively across teams — functions — and time zones
+					</li>
+				</ul>
+
+				<h2>Preferred Qualifications</h2>
+				<ul>
+					<li>
+						Experience with cloud platforms — AWS — Azure — or GCP — and distributed
+						system architectures
+					</li>
+					<li>
+						Familiarity with containers — Docker — Kubernetes — and orchestration
+						systems
+					</li>
+					<li>
+						Knowledge of databases — SQL — NoSQL — indexing — and data modeling concepts
+					</li>
+					<li>
+						Exposure to CI/CD pipelines — automation — DevOps practices — and modern
+						delivery pipelines
+					</li>
+					<li>
+						Experience working in Agile — Scrum — Kanban — or other iterative
+						development environments
+					</li>
+				</ul>
+
+				<h2>What We Offer</h2>
+				<ul>
+					<li>
+						Competitive compensation — salary — bonus — and comprehensive benefits
+						package
+					</li>
+					<li>
+						Opportunities for growth — mentorship — learning — and long-term career
+						development
+					</li>
+					<li>
+						A collaborative — inclusive — supportive — and high-impact engineering
+						culture
+					</li>
+					<li>
+						Flexible work arrangements — remote — hybrid — or on-site — depending on
+						role requirements
+					</li>
+					<li>
+						Access to modern tools — cutting-edge technologies — and scalable
+						infrastructure systems
+					</li>
+				</ul>
+
+				<h2>Equal Opportunity Employer</h2>
+				<p>
+					We are an equal opportunity employer — committed to fostering a diverse —
+					inclusive — equitable — and accessible workplace. All qualified applicants will
+					receive consideration for employment — without regard to race — color — religion
+					— gender — gender identity — sexual orientation — national origin — disability
+					status — veteran status — age — or any other protected characteristic under
+					applicable law.
+				</p>
+			</div>
+
+			<form action="/cgi-bin/application.sh" method="POST">
+				<h2>Application</h2>
+				<label for="first_name">
+					First Name: <input type="text" id="first_name" name="first_name" required
+				/></label>
+
+				<label for="last_name">
+					Last Name: <input type="text" id="last_name" name="last_name" required
+				/></label>
+
+				<label for="email">
+					Email: <input type="email" id="email" name="email" required
+				/></label>
+				<label for="phone">
+					Phone Number: <input type="tel" id="phone" name="phone" required
+				/></label>
+				<label for="resume"> Resume: </label>
+				<textarea id="resume" name="resume" rows="10" cols="50" required></textarea>
+				<label for="website"
+					>Website: <input type="url" id="website" name="website" />
+				</label>
+				<label for="linkedin">
+					LinkedIn: <input type="url" id="linkedin" name="linkedin" />
+				</label>
+				<label for="github"> GitHub: <input type="url" id="github" name="github" /></label>
+				<hr />
+				<h3>Education:</h3>
+				<label for="school">
+					School: <input type="text" id="school" name="school" required />
+				</label>
+				<label for="degree">
+					Degree: <input type="text" id="degree" name="degree" required />
+				</label>
+				<label for="graduation_year">
+					Graduation Year:
+					<input
+						type="number"
+						id="graduation_year"
+						name="graduation_year"
+						min="2026"
+						required
+					/>
+				</label>
+				<hr />
+				<label for="q1">
+					Are you legally authorized to work in the United States?
+					<input type="checkbox" id="q1" name="q1" required />
+				</label>
+				<label for="q2">
+					Will you require sponsorship for employment now or in the future?
+					<input type="checkbox" id="q2" name="q2" required />
+				</label>
+				<label for="q3">
+					Are you open to relocation?
+					<input type="checkbox" id="q3" name="q3" required />
+				</label>
+				<label for="q4">
+					Are you prohibited from being employed at COMPANY_NAME due to a non-compete
+					agreement?
+					<input type="checkbox" id="q4" name="q4" required />
+				</label>
+				<label for="q5">
+					Do you certify that the information provided is accurate?
+					<input type="checkbox" id="q5" name="q5" required />
+				</label>
+				<div>
+					<input type="submit" value="Submit Application" />
+				</div>
+			</form>
+		</main>
+	</body>
+</html>

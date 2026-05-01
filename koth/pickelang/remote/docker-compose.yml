@@ -1,0 +1,24 @@
+services:
+  jail:
+    build: ./jail
+    expose:
+      - 6969
+    restart: on-failure
+    privileged: true
+    networks:
+      - jailnetwork
+  server:
+    build: ./server
+#    ports:
+#      - 6970:5000
+    depends_on:
+      - jail
+    restart: on-failure
+    networks:
+      - koth
+      - jailnetwork
+networks:
+  koth:
+    external: true
+  jailnetwork:
+    internal: true

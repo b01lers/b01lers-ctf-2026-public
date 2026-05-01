@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="grid hero">
+  <article class="panel pad">
+    <span class="eyebrow">Receipt to payoff links</span>
+    <h1>Stop worrying about the split. Your agentic solution is here</h1>
+    <p>Drop in a receipt image and a short instruction audio, then scan venmo links to pay debts.</p>
+    <div class="cards">
+      <div class="card"><strong>It's AUTOMATIC</strong><p>You don't need to type anything.</p></div>
+      <div class="card"><strong>It's AGENTIC</strong><p>Nextgen intelligent splitting.</p></div>
+      <div class="card"><strong>Less back-and-forth</strong><p>Everyone sees exactly what they owe so settling up takes less effort.</p></div>
+    </div>
+  </article>
+  <aside class="panel pad">
+    <h2>Start a new split</h2>
+    <form id="upload-form">
+      <label>Receipt image<input type="file" name="receipt" accept="image/*" required /></label>
+      <p>Use a clear JPEG or PNG receipt image.</p>
+      <label>Instructions audio<input type="file" name="instructions" accept="audio/mpeg" required /></label>
+      <p>Upload a short MP3 with your split instructions.</p>
+      <button id="submit-button" class="primary" type="submit">Process Bill</button>
+      <p id="submit-status">Upload your files to start the split.</p>
+    </form>
+    <div class="actions"><a class="button secondary" href="/status">Open live status</a></div>
+  </aside>
+</section>
+{% endblock %}

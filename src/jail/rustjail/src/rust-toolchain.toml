@@ -1,0 +1,3 @@
+[toolchain]
+# pin exact version to avoid things potentially breaking on future release
+channel = "nightly-2026-04-14"

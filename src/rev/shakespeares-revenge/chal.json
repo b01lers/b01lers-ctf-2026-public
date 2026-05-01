@@ -1,0 +1,11 @@
+{
+    "name": "shakespeares-revenge",
+    "author": "cyberg",
+    "description": "William was upset that you solved the last one, so he made the next one a little bit stronger :) \n\n `ncat --ssl shakespeares-revenge.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{4_p0und_0f_fl35h}",
+    "difficulty": "medium",
+    "can_be_auto_deployed": true,
+    "ports": [
+        3001
+    ]
+}

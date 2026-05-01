@@ -1,0 +1,9 @@
+{
+  "name": "gas-giant",
+  "author": "ky28059",
+  "description": "\uD83D\uDC0D\uD83E\uDDD1\u200D\uD83D\uDE80\uD83D\uDE80\uD83E\uDE90\n\n[instancer](https://instancer.b01lersc.tf/challenge/gas-giant)\n\n*(Disclaimer: the admin bot can be slow to execute your payload. Please test locally before submitting on remote.)*",
+  "flag": "bctf{boys_go_to_jupiter_to_get_more_stupider}",
+  "difficulty": "medium",
+  "can_be_auto_deployed": true,
+  "ports": [3000]
+}

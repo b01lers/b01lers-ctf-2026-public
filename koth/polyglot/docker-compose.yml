@@ -1,0 +1,34 @@
+services:
+  inner:
+    build: ./inner
+    image: polyglot-inner
+    cap_add:
+      - SYS_ADMIN
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+      - seccomp:unconfined
+    expose:
+      - "8989"
+    networks:
+      - sandbox
+
+  outer:
+    build: ./outer
+    image: polyglot-outer
+    environment:
+      - WORKERS=5
+    # ports:
+    #   - "5000:5000"
+    depends_on:
+      - inner
+    networks:
+      - koth
+      # - default
+      - sandbox
+
+networks:
+  koth:
+    external: true
+  sandbox:
+    internal: true

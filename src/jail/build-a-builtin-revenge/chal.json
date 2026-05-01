@@ -1,0 +1,11 @@
+{
+    "name": "build-a-builtin-revenge",
+    "author": "oh_word",
+    "description": "Your agents will love this \n\n `ncat --ssl build-a-builtin-revenge.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{congratulations_ctf_agent_14_from_solver_swarm_5_for_solving_this_challenge_c5ae58de}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "ports": [
+        6741
+    ]
+}

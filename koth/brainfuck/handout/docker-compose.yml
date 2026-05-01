@@ -1,0 +1,5 @@
+services:
+  brainfuck:
+    build: .
+    volumes:
+      - .:/work

@@ -1,0 +1,11 @@
+version: "3"
+services:
+    favorite_potato:
+        container_name: favorite_potato_container
+        build:
+            dockerfile: ./deploy/Dockerfile
+            context: ../
+        logging:
+            driver: "json-file"
+        ports:
+            - "1337:5000"

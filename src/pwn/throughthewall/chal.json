@@ -1,0 +1,11 @@
+{
+    "name": "throughthewall",
+    "author": "bhcsayx",
+    "description": "This wall is not very solid seemingly, can you get through it? \n\n `ncat --ssl throughthewall.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{spray_those_dirty_pipes}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        7352
+    ]
+}

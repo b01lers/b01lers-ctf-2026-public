@@ -1,0 +1,11 @@
+{
+    "name": "qss",
+    "author": "cyberg",
+    "description": "quantum secret sharing is the way of the future! \n\n `ncat --ssl qss.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{phy51c5_1s_l1k3_s3x}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        4447
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "piano",
+    "author": "oh_word",
+    "description": "A sky full of stars",
+    "flag": "bctf{b#fqQZ*OEQAZKTDAYyl6VPRomVPRom}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true
+}

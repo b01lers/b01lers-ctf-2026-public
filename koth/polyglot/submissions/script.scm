@@ -1,0 +1,8 @@
+(define a (read))
+(define b (read))
+(define c (read))
+(define (powmod a b c)
+  (if (= b 1) (modulo a c)
+    (modulo (* a (powmod a (- b 1) c)) c)))
+(display (powmod a b c))
+(newline)

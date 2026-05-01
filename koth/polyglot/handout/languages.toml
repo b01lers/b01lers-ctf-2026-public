@@ -1,0 +1,135 @@
+[bash]
+[bash.runner]
+cmd = ["/bin/bash", "--restricted", "/tmp/script"]
+timeout = 10
+
+[c]
+[c.runner]
+cmd = ["/usr/bin/tcc", "-run", "/tmp/script"]
+timeout = 10
+
+[elixir]
+[elixir.compile]
+cmd = ["/bin/sh", "-c", "{ printf 'defmodule Main do\\ndef main do\\n'; cat /tmp/script; printf '\\nend\\nend\\n'; } > /tmp/main.ex && /usr/bin/erl -pa /usr/lib/elixir/lib/elixir/ebin -noshell -s elixir start_cli -extra +elixirc -o /out /tmp/main.ex"]
+timeout = 30
+binary_name = "Elixir.Main.beam"
+extra_env = ["LANG=C.UTF-8"]
+[elixir.runner]
+cmd = ["/usr/bin/erl", "-pa", "/usr/lib/elixir/lib/elixir/ebin", "-pa", "/tmp", "-noshell", "-s", "elixir", "start_cli", "-extra", "-e", "Main.main()"]
+timeout = 10
+binary_name = "Elixir.Main.beam"
+extra_env = ["LANG=C.UTF-8"]
+
+[erlang]
+[erlang.compile]
+cmd = ["/bin/sh", "-c", "printf '-module(main).\\n-export([main/1]).\\n' > /tmp/main.erl && cat /tmp/script >> /tmp/main.erl && erlc -o /out /tmp/main.erl"]
+timeout = 30
+binary_name = "main.beam"
+[erlang.runner]
+cmd = ["/usr/bin/escript", "/tmp/main.beam"]
+timeout = 10
+binary_name = "main.beam"
+
+[fish]
+[fish.runner]
+cmd = ["/bin/sh", "-c", "read a; read b; read c; /usr/local/bin/starfish -i \"$a $b $c\" /tmp/script 2>&1"]
+timeout = 10
+
+[golfscript]
+[golfscript.runner]
+cmd = ["/usr/bin/ruby", "/usr/local/bin/golfscript.rb", "/tmp/script"]
+timeout = 10
+
+[haskell]
+[haskell.compile]
+cmd = ["/usr/bin/ghc", "-O0", "-no-keep-hi-files", "-no-keep-o-files", "-o", "/out/prog", "/tmp/script.hs"]
+timeout = 30
+filename = "script.hs"
+extra_env = ["LD_LIBRARY_PATH=/usr/lib/ghc-9.10.3/lib/x86_64-linux-ghc-9.10.3-inplace"]
+[haskell.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+
+[j]
+[j.runner]
+cmd = ["/opt/j9.6/bin/jconsole", "/tmp/script"]
+timeout = 10
+extra_env = ["LD_LIBRARY_PATH=/opt/j9.6/bin"]
+
+[java]
+[java.compile]
+cmd = ["/usr/bin/javac", "-d", "/out", "/tmp/Main.java"]
+timeout = 30
+binary_name = "Main.class"
+filename = "Main.java"
+extra_env = ["JAVA_HOME=/usr/lib/jvm/java-25-openjdk", "LD_LIBRARY_PATH=/usr/lib/jvm/java-25-openjdk/lib:/usr/lib/jvm/java-25-openjdk/lib/server"]
+[java.runner]
+cmd = ["/usr/bin/java", "-cp", "/tmp", "Main"]
+timeout = 10
+binary_name = "Main.class"
+extra_env = ["JAVA_HOME=/usr/lib/jvm/java-25-openjdk", "LD_LIBRARY_PATH=/usr/lib/jvm/java-25-openjdk/lib:/usr/lib/jvm/java-25-openjdk/lib/server"]
+
+[julia]
+[julia.runner]
+cmd = ["/usr/local/julia/bin/julia", "--compile=min", "--startup-file=no", "/tmp/script"]
+timeout = 20
+extra_env = ["LD_LIBRARY_PATH=/usr/local/julia/lib:/usr/local/julia/lib/julia", "JULIA_DEPOT_PATH=/tmp/julia_depot"]
+
+[lua]
+[lua.runner]
+cmd = ["/usr/bin/lua5.4", "/tmp/script"]
+timeout = 10
+
+[odin]
+[odin.compile]
+cmd = ["/usr/bin/odin", "build", "/tmp/main.odin", "-file", "-out:/out/prog"]
+timeout = 30
+filename = "main.odin"
+extra_env = ["ODIN_ROOT=/usr/lib/odin/"]
+[odin.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+
+[perl]
+[perl.runner]
+cmd = ["/usr/bin/perl", "/tmp/script"]
+timeout = 10
+
+[python0]
+[python0.runner]
+cmd = ["/usr/local/bin/python0", "/tmp/script"]
+timeout = 10
+
+[scheme]
+[scheme.runner]
+cmd = ["/usr/bin/guile", "--no-auto-compile", "/tmp/script"]
+timeout = 10
+
+[rust]
+[rust.compile]
+cmd = ["/bin/sh", "-c", "rustc -C linker=/usr/bin/cc /tmp/script -o /out/prog"]
+timeout = 30
+[rust.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+
+[typescript]
+[typescript.runner]
+cmd = ["/usr/local/bin/bun", "run", "/tmp/script.ts"]
+timeout = 30
+filename = "script.ts"
+
+[whitespace]
+[whitespace.runner]
+cmd = ["/usr/local/bin/whitespace", "t", "/tmp/script"]
+timeout = 10
+
+[zig]
+[zig.compile]
+cmd = ["/usr/bin/zig", "build-exe", "/tmp/script.zig", "--cache-dir", "/tmp/zig-cache", "--global-cache-dir", "/tmp/zig-global-cache", "-femit-bin=/out/prog"]
+timeout = 30
+filename = "script.zig"
+[zig.runner]
+cmd = ["/tmp/prog"]
+timeout = 10
+

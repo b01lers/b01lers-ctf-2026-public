@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clankers Market</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+<body>
+  <main class="shell">
+    <section class="card">
+      <h1>Clankers Market</h1>
+      <p class="tagline">Where compromised creds trade hands before the clock runs out.</p>
+
+      {% if username %}
+        <p class="welcome">Welcome back, {{ username }}.</p>
+        <div class="actions">
+          <a class="btn" href="{{ url_for('listing') }}">Enter Listings</a>
+          <a class="btn ghost" href="{{ url_for('test') }}">Clanker Feature</a>
+          <form method="post" action="{{ url_for('logout') }}">
+            <button class="btn ghost" type="submit">Logout</button>
+          </form>
+        </div>
+      {% else %}
+        <div class="actions">
+          <a class="btn" href="{{ url_for('login') }}">Login</a>
+          <a class="btn ghost" href="{{ url_for('register') }}">Register</a>
+        </div>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

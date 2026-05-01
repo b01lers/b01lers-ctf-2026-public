@@ -1,0 +1,13 @@
+{
+    "name": "clankers-market",
+    "author": "vinhchilling",
+    "description": "People still leak clanker keys norwadays?\n\n\n\n[clankancer](https://instancer.b01lersc.tf/challenge/clankers-market)",
+    "flag": "bctf{d1d_you_get_rce_from_checkout??I_tried_my_best_to_limit_but_clanker_too_good_now!!!}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        5000
+    ],
+    "tags": ["beginner"],
+    "hidden": false
+}

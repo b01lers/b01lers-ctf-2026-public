@@ -1,0 +1,11 @@
+{
+    "name": "tiles + ai",
+    "author": "wondering + tillvit",
+    "description": "I love matrix multiplication 😍\nNote: this challenge was tested with the [Intel SDE](https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html) version 10.8.0 with the Sapphire Rapids preset. \n\n `ncat --ssl tiles--ai.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{in_the_matrix_straight_up_multiplying_it_ec3428a06}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "ports": [
+        5000
+    ]
+}

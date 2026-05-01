@@ -1,0 +1,12 @@
+#!/bin/sh
+exec /usr/bin/qemu-system-x86_64 \
+    -L /usr/local/share/qemu \
+    -m 256M \
+    -nographic \
+    -kernel /app/bzImage \
+    -append "console=ttyS0 loglevel=3 oops=panic panic=-1 pti=on kaslr" \
+    -no-reboot \
+    -cpu qemu64,+smep,+smap \
+    -smp 2 \
+    -initrd /app/initramfs.cpio.gz \
+    -monitor none

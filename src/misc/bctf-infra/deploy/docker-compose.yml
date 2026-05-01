@@ -1,0 +1,15 @@
+name: bctf-infra
+services:
+    chall:
+        container_name: bctf-infra
+        build: ../src/
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "50k"
+                max-file: "3"
+        privileged: true
+        expose:
+            - "1337"
+        ports:
+            - "1337:1337"

@@ -1,0 +1,46 @@
+#!/bin/sh
+set -eu
+
+mount -t devtmpfs devtmpfs /dev
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+
+echo "[multifiles] booting challenge initrd"
+
+mkdir -p /etc /home/ctf
+chmod 1777 /tmp
+
+cat > /etc/passwd << 'EOF'
+root:x:0:0:root:/root:/bin/sh
+ctf:x:1000:1000:ctf:/home/ctf:/bin/sh
+EOF
+
+cat > /etc/group << 'EOF'
+root:x:0:
+ctf:x:1000:
+EOF
+
+if ! /bin/insmod /multifiles.ko; then
+    echo "[multifiles] failed to load /multifiles.ko"
+else
+    i=0
+    while [ ! -e /dev/multifiles ] && [ "$i" -lt 10 ]; do
+        sleep 1
+        i=$((i + 1))
+    done
+    chmod 666 /dev/multifiles || true
+fi
+
+chown -R 1000:1000 /home/ctf
+
+cat << 'EOF'
+==============================
+ multifiles kernel challenge
+==============================
+Device: /dev/multifiles
+Flag:   /root/flag.txt (root only)
+User:   ctf (uid=1000)
+==============================
+EOF
+
+exec /bin/sh

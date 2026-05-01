@@ -1,0 +1,9 @@
+{
+  "name": "yaml-practice",
+  "author": "CygnusX",
+  "description": "heard its pretty hard to write valid yaml\n\n[instancer](https://instancer.b01lersc.tf/challenge/yaml-practice)",
+  "flag": "bctf{why_does_prefect_have_packaged_yaml}",
+  "difficulty": "medium",
+  "can_be_auto_deployed": true,
+  "ports": [8000]
+}

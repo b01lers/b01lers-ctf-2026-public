@@ -1,0 +1,11 @@
+{
+    "name": "venmo-me-67",
+    "author": "vinhchilling",
+    "description": "Gemini I hit Claude rate limit slop up a challenge make no mistake\n\n[instancer](https://instancer.b01lersc.tf/challenge/venmo-67)",
+    "flag": "bctf{h0w_f4st_c4n_sl0p_sl0p_s1op_sfadfasdfawe}",
+    "difficulty": "easy",
+    "can_be_auto_deployed": true,
+    "ports": [
+        5000
+    ]
+}

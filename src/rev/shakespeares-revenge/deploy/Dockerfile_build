@@ -1,0 +1,21 @@
+FROM ubuntu:22.04
+
+# Install any software to build the challenge
+RUN apt-get update && \
+apt-get install -y g++ make bison flex
+
+ENV USER william-shakespeare
+WORKDIR /home/$USER
+RUN useradd $USER
+
+# Copy any necessary files to build challenge
+# by default copy entire src folder
+COPY ./src/cpp /home/$USER/cpp
+
+# make directory writable so we can output chall file
+RUN chmod 777 /home/$USER
+
+# Build the challenge and output it to dist folder
+# Also copy the libc if it is needed by the challenge, remove that line if you don't need it
+CMD make -C /home/$USER/cpp && \
+	cp /home/$USER/cpp/shakespeare_cpp /dist/shakespeare

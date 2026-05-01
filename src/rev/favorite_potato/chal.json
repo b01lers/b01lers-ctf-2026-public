@@ -1,0 +1,11 @@
+{
+    "name": "Favorite Potato",
+    "author": "dm",
+    "description": "Yay, at last - I managed to upgrade my old potato. Now I can run suuuuper loooong binaries that nobody can reverse (RAM is still 64k but I only need a minimal amount). \n\n `ncat --ssl favorite-potato.opus4-7.b01le.rs 8443`",
+    "flag": "bctf{Nev3r_underst00d_why_we_n33d_TSX_and_TXS_unt1l_n0w..:D}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "ports": [
+        1337
+    ]
+}

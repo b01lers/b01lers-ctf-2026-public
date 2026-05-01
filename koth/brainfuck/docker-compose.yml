@@ -1,0 +1,29 @@
+services:
+  inner:
+    build: ./inner
+    image: brainfuck-inner
+    privileged: true
+    expose:
+      - "8990"
+    networks:
+      - sandbox
+
+  outer:
+    build: ./outer
+    image: brainfuck-outer
+    environment:
+      - WORKERS=3
+    # ports:
+    #   - "5001:5001"
+    depends_on:
+      - inner
+    networks:
+      - koth
+      # - default
+      - sandbox
+
+networks:
+  koth:
+    external: true
+  sandbox:
+    internal: true

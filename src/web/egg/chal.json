@@ -1,0 +1,9 @@
+{
+  "name": "🥚",
+  "author": "CygnusX",
+  "description": "🥚\n\n[instancer](https://instancer.b01lersc.tf/challenge/egg)",
+  "flag": "bctf{you_w1n!1}",
+  "difficulty": "medium",
+  "can_be_auto_deployed": true,
+  "ports": [8000]
+}

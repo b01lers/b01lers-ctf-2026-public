@@ -1,0 +1,5 @@
+services:
+  polyglot-local:
+    build: .
+    volumes:
+      - .:/work

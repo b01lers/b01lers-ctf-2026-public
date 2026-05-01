@@ -1,0 +1,16 @@
+name: gas-giant
+services:
+    chall:
+        container_name: gas-giant
+        build:
+            dockerfile: ./Dockerfile
+            context: .
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "50k"
+                max-file: "3"
+        expose:
+            - "3000"
+        ports:
+            - "3000:3000"

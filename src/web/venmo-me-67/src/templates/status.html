@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="actions" style="margin-bottom:20px;">
+  <a class="button primary" href="/">Start another upload</a>
+  <button id="clear-token-button" class="secondary" type="button">Clear stored token</button>
+</div>
+<section class="grid hero" style="margin-bottom:20px;">
+  <article class="panel pad">
+    <span class="pill">Live job tracking</span>
+    <h1>Your split progress and payment results.</h1>
+    <p>Follow your split as it moves from upload to completed results, then share balances and payment options with your group.</p>
+    <div class="stats" style="margin-top:20px;">
+      <div class="metric"><span>Active token</span><strong id="token-value">Waiting for token...</strong></div>
+      <div class="metric"><span>Current status</span><strong id="status-value">Idle</strong></div>
+      <div class="metric"><span>Last sync</span><strong id="updated-value">Not started</strong></div>
+    </div>
+  </article>
+  <aside class="panel pad stack">
+    <div id="status-badge" class="badge">Idle</div>
+    <p id="status-message">Checking for your latest split job.</p>
+    <div id="error-banner" class="banner error"></div>
+  </aside>
+</section>
+<section class="grid columns">
+  <div class="stack">
+    <article class="panel pad">
+      <h2>Who owes what</h2>
+      <div id="split-results" class="list"><p>No owed balances yet.</p></div>
+    </article>
+    <article class="panel pad">
+      <h2>Warnings</h2>
+      <div id="warnings-list" class="list"><p>No warnings yet.</p></div>
+    </article>
+  </div>
+  <div class="stack">
+    <article class="panel pad">
+      <h2>Venmo QR codes</h2>
+      <div id="qr-results" class="qr-selector"><p>No QR codes yet.</p></div>
+    </article>
+  </div>
+</section>
+{% endblock %}

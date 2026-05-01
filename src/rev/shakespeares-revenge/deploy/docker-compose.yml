@@ -1,0 +1,37 @@
+name: shakespeares-revenge
+services:
+    build:
+        container_name: shakespeares-revenge_build
+        build:
+            dockerfile: ./deploy/Dockerfile_build
+            context: ../
+        logging:
+            driver: "json-file"
+        volumes:
+            - ../dist:/dist
+
+    chall:
+        container_name: shakespeares-revenge
+        privileged: true # redpwn/jail requires a rootful privileged container
+        depends_on:
+            build:
+                condition: service_completed_successfully
+        build:
+            dockerfile: ./deploy/Dockerfile
+            context: ../
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "50k"
+                max-file: "3"
+        expose: # This should be the port your challenge runs on inside the container.
+            - "3001"
+        labels: # If you have a second service make sure the service name and port are replaced
+            - "traefik.enable=true"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.rule=HostSNI(`${COMPOSE_PROJECT_NAME}.b01le.rs`)"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.tls=true"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.entrypoints=ncsecure"
+            - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}.service=${COMPOSE_PROJECT_NAME}-svc"
+            - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-svc.loadbalancer.server.port=3001"
+        ports:
+            - "1337:3001"

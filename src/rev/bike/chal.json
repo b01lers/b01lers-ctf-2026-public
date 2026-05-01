@@ -1,0 +1,10 @@
+{
+    "name": "bike",
+    "author": "CygnusX",
+    "description": "Get your bike down from the tree!!",
+    "flag": "bctf{now_you_can_bike_around:)}",
+    "difficulty": "hard",
+    "can_be_auto_deployed": true,
+    "tags": ["beginner"],
+    "hidden": false
+}
